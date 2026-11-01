@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valid Symphony | Valid Privacy</title>
+<meta name="description" content="Touchless home control with 60 GHz radar that runs entirely on your home network.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="site.css">
+<script>try{if(localStorage.getItem('valid-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="vv-mark-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color: var(--mark-1)"/><stop offset="1" style="stop-color: var(--mark-2)"/></linearGradient><clipPath id="vv-mark-clip"><path d="M4,4 L104,4 L171,262 L238,4 L338,4 L171,399 Z"/></clipPath><mask id="vv-mark-mask"><g fill="#fff"><rect x="0" y="8.00" width="342" height="14.44"/><rect x="0" y="36.89" width="342" height="14.44"/><rect x="0" y="65.78" width="342" height="14.44"/><rect x="0" y="94.67" width="342" height="14.44"/><rect x="0" y="123.56" width="342" height="14.44"/><rect x="0" y="152.44" width="342" height="14.44"/><rect x="0" y="181.33" width="342" height="14.44"/><rect x="0" y="210.22" width="342" height="14.44"/><rect x="0" y="239.11" width="342" height="14.44"/><rect x="0" y="268.00" width="342" height="14.44"/><rect x="0" y="296.89" width="342" height="14.44"/><rect x="0" y="325.78" width="342" height="14.44"/><rect x="0" y="354.67" width="342" height="14.44"/><rect x="0" y="383.56" width="342" height="14.44"/></g></mask></defs><symbol id="vv-mark" viewBox="0 0 342 403"><g clip-path="url(#vv-mark-clip)"><rect width="342" height="403" fill="url(#vv-mark-fill)" mask="url(#vv-mark-mask)"/></g></symbol></svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="index.html" aria-label="Valid Privacy home"><svg viewBox="0 0 342 403" aria-hidden="true"><use href="#vv-mark"/></svg>VALID <span class="brand-sub">PRIVACY</span></a>
+    <nav class="tabs" aria-label="Main"><a href="vault.html">Valid Vault</a><a href="symphony.html" aria-current="page">Valid Symphony</a><a href="network.html">Valid Network</a><a href="company.html">Company</a></nav>
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to night mode" title="Switch between day and night"><span class="when-night"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></span><span class="when-day"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="chip">Prototype</span></div>
+      <h1 class="title">Valid Symphony</h1>
+      <p class="lead">Conduct your life.</p>
+      <p class="sub">Touchless home control. Raise your hand into a small control zone and your lights follow it. A 60 GHz radar reads the position of your hand, and the hub drives the lights over your home network, with no camera, microphone, account, or cloud service involved.</p>
+      <div class="btn-row"><a class="btn" href="https://github.com/HiImRook/valid-symphony" target="_blank" rel="noopener">Source code</a><a class="btn quiet" href="https://discord.gg/2SP383cJs9" target="_blank" rel="noopener">Follow progress</a></div>
+    </div>
+    <div class="hero-mark"><svg viewBox="0 0 342 403" aria-hidden="true"><use href="#vv-mark"/></svg></div>
+  </div>
+</section>
+
+<section class="band alt" id="how">
+  <div class="wrap">
+    <div class="section-head"><h2>How it works</h2><p>Walking through the room changes nothing. Only a deliberate gesture does.</p></div>
+    <ol class="steps">
+      <li><h3>Zone</h3><p style="color:var(--text-dim);margin-top:6px">The radar watches a small, invisible control zone in front of it.</p></li>
+      <li><h3>Grab</h3><p style="color:var(--text-dim);margin-top:6px">Holding a hand still in the zone for half a second takes control, and the light dips briefly to confirm.</p></li>
+      <li><h3>Adjust</h3><p style="color:var(--text-dim);margin-top:6px">Raising or lowering the hand moves the brightness smoothly.</p></li>
+      <li><h3>Release</h3><p style="color:var(--text-dim);margin-top:6px">Pulling the hand away leaves the light where you set it.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="principles">
+  <div class="wrap">
+    <div class="section-head"><h2>Design principles</h2></div>
+    <div class="grid three">
+      <div class="card"><h3>Local only</h3><p>The sensor talks to a hub in your home, and the hub talks to your lights. Nothing leaves the home network.</p></div>
+      <div class="card"><h3>Nothing recorded</h3><p>Hand positions exist in memory for a fraction of a second. The hub keeps no logs or history on disk.</p></div>
+      <div class="card"><h3>Radar, never images</h3><p>The sensor measures distance and motion. It cannot capture a picture or a sound.</p></div>
+      <div class="card"><h3>Your existing lights</h3><p>LIFX first, then Zigbee lights through Zigbee2MQTT, then Home Assistant.</p></div>
+      <div class="card"><h3>Controlled supply chain</h3><p>Dependencies are copied into the repository and audited on every commit, and release builds run offline on a pinned toolchain.</p></div>
+      <div class="card"><h3>Built in the USA</h3><p>Designed around a Texas Instruments radar from Dallas, with hardware planned for assembly in the USA.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="architecture">
+  <div class="wrap split">
+    <div>
+      <h2>Architecture</h2>
+      <div class="prose" style="margin-top:18px">
+        <p><strong>symphony-core</strong> handles hand tracking, the grab and release logic, smoothing, and output pacing. It is written once in Rust to run on the hub today and on the radar chip itself later.</p>
+        <p><strong>symphony-hub</strong> reads the radar over USB, runs the core, and drives the lights through interchangeable backends.</p>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:12px">Prototype hardware</h3>
+      <table class="table">
+        <tbody>
+          <tr><td>TI IWRL6432AOPEVM</td><td>60 GHz radar evaluation board streaming 3D points over USB</td></tr>
+          <tr><td>Hub computer</td><td>Runs the hub software on Windows, with Linux to follow</td></tr>
+          <tr><td>LIFX bulbs</td><td>The first light backend, controlled on the local network</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="milestones">
+  <div class="wrap split">
+    <div>
+      <h2>Progress</h2>
+      <p style="color:var(--text-dim);margin-top:14px">The radar board is running and the hub tracks a moving hand live. Hand control is being tuned on the board now.</p>
+    </div>
+    <div>
+      <h3 style="margin-bottom:12px">Complete</h3>
+      <ul class="ticks">
+        <li>Repository, Rust workspace with no external dependencies, and a continuous security audit</li>
+        <li>Radar running, with a moving hand visible in TI's visualizer</li>
+        <li>Hub configures the radar and reads its frames without errors</li>
+      </ul>
+      <h3 style="margin:24px 0 12px">Next</h3>
+      <ul class="ticks dim">
+        <li>A live control value that follows the hand and ignores movement behind the zone</li>
+        <li>Grab, raise, lower, and release dimming a LIFX bulb</li>
+        <li>Reliable grabs with a light response within about 100 ms</li>
+        <li>Left and right movement setting color temperature</li>
+      </ul>
+      <h3 style="margin:24px 0 12px">After the prototype</h3>
+      <ul class="ticks dim">
+        <li>A custom board around TI's IWRL6432 with a certified Zigbee and Thread radio</li>
+        <li>Tester units in real homes and pre-compliance radio testing</li>
+        <li>FCC certification and a first production run</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><svg viewBox="0 0 342 403" aria-hidden="true"><use href="#vv-mark"/></svg>VALID <span class="brand-sub">PRIVACY</span></a>
+        <p class="foot-note">Software that keeps your data on your own devices.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul><li><a href="vault.html">Valid Vault</a></li><li><a href="symphony.html">Valid Symphony</a></li><li><a href="https://chromewebstore.google.com/detail/valid-vault-password-mana/fkpfaemmphmakebhejhaegjgcnieeoab" target="_blank" rel="noopener">Chrome Web Store</a></li></ul>
+      </div>
+      <div>
+        <h4>Developers</h4>
+        <ul><li><a href="https://github.com/validprivacy" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://hiimrook.github.io/valid-vault-password-manager/guide.html">Valid Vault User Guide</a></li><li><a href="https://github.com/HiImRook/valid-vault-password-manager/blob/main/ROADMAP.md" target="_blank" rel="noopener">Valid Vault Roadmap</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="company.html">About</a></li><li><a href="network.html">Valid Network</a></li><li><a href="network.html#foundation">The Valid Foundation</a></li><li><a href="company.html#security">Security</a></li><li><a href="company.html#contact">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-base"><span>&copy; 2026 Valid Privacy</span><span><a href="https://hiimrook.github.io/valid-vault-password-manager/privacy.html">Privacy Policy</a></span></div>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

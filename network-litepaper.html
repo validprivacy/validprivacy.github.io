@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valid Network Litepaper | Valid Privacy</title>
+<meta name="description" content="A plain language guide to Valid Network.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="site.css">
+<script>try{if(localStorage.getItem('valid-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="vv-mark-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color: var(--mark-1)"/><stop offset="1" style="stop-color: var(--mark-2)"/></linearGradient><clipPath id="vv-mark-clip"><path d="M4,4 L104,4 L171,262 L238,4 L338,4 L171,399 Z"/></clipPath><mask id="vv-mark-mask"><g fill="#fff"><rect x="0" y="8.00" width="342" height="14.44"/><rect x="0" y="36.89" width="342" height="14.44"/><rect x="0" y="65.78" width="342" height="14.44"/><rect x="0" y="94.67" width="342" height="14.44"/><rect x="0" y="123.56" width="342" height="14.44"/><rect x="0" y="152.44" width="342" height="14.44"/><rect x="0" y="181.33" width="342" height="14.44"/><rect x="0" y="210.22" width="342" height="14.44"/><rect x="0" y="239.11" width="342" height="14.44"/><rect x="0" y="268.00" width="342" height="14.44"/><rect x="0" y="296.89" width="342" height="14.44"/><rect x="0" y="325.78" width="342" height="14.44"/><rect x="0" y="354.67" width="342" height="14.44"/><rect x="0" y="383.56" width="342" height="14.44"/></g></mask></defs><symbol id="vv-mark" viewBox="0 0 342 403"><g clip-path="url(#vv-mark-clip)"><rect width="342" height="403" fill="url(#vv-mark-fill)" mask="url(#vv-mark-mask)"/></g></symbol></svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="index.html" aria-label="Valid Privacy home"><svg viewBox="0 0 342 403" aria-hidden="true"><use href="#vv-mark"/></svg>VALID <span class="brand-sub">PRIVACY</span></a>
+    <nav class="tabs" aria-label="Main"><a href="vault.html">Valid Vault</a><a href="symphony.html">Valid Symphony</a><a href="network.html" aria-current="page">Valid Network</a><a href="company.html">Company</a></nav>
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to night mode" title="Switch between day and night"><span class="when-night"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></span><span class="when-day"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></span></button>
+  </div>
+</header>
+<main id="main">
+<div class="wrap doc-page">
+<div class="paper">
+<h1 id="valid-blockchain-a-plain-language-guide">Valid Blockchain: A Plain Language Guide</h1>
+<p><strong>Author:</strong> Michael J Carter<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> August 27, 2026<br />
+<strong>Website:</strong> <a href="https://validprivacy.github.io/network.html" target="_blank" rel="noopener">https://validprivacy.github.io/network.html</a><br />
+<strong>Repository:</strong> <a href="https://github.com/validprivacy/valid-network" target="_blank" rel="noopener">https://github.com/validprivacy/valid-network</a><br />
+<strong>Discord:</strong> <a href="https://discord.gg/2SP383cJs9" target="_blank" rel="noopener">https://discord.gg/2SP383cJs9</a>  </p>
+<hr />
+<h2 id="what-is-valid-blockchain">What Is Valid Blockchain?</h2>
+<p>Valid Blockchain is a new type of blockchain built from scratch. It does not fork from Ethereum, Bitcoin, or anything else. Every piece of it was written by hand in Rust, with one goal above all others: make it possible for anyone in the world to participate as a validator, regardless of how much money they have or what hardware they are running.</p>
+<p>The two ideas at the heart of it are worth understanding before anything else.</p>
+<p><strong>Three-Party Integrity (TPI)</strong> is the consensus mechanism that powers Valid Blockchain. Instead of requiring thousands of validators to communicate and vote, TPI selects exactly three validators per block. Each of them independently computes the same block and compares results. If they agree, the block is finalized in under a second. If one of them disagrees, that validator gets penalized. It is fast, it is efficient, and it does not slow down as the network grows.</p>
+<p><strong>Zero Footprint</strong> is the philosophy behind how the network handles identity and data. A validator's IP address is never stored. Peer identity is derived from a hash that rotates daily. Certificates are generated in memory and thrown away when the node shuts down. The network is designed so that there is nothing sensitive to steal, because nothing sensitive is ever held.</p>
+<hr />
+<h2 id="the-problem-valid-blockchain-is-solving">The Problem Valid Blockchain Is Solving</h2>
+<p>Bitcoin mining is dominated by a small number of industrial mining operations. Ethereum requires 32 ETH to run a validator, which is a significant financial barrier for most people on Earth. Both of these networks were built with decentralization as a stated goal, but the economic reality is that participation is concentrated in wealthy countries and among people who can afford the entry cost.</p>
+<p>Valid Blockchain rejects that model entirely. There is no stake required. There is no specialized hardware required. A Raspberry Pi with 4GB of RAM can run a full validator node. A laptop from the last decade can run a full validator node. Someone in a rural area with a modest internet connection is a first-class participant here, not an afterthought.</p>
+<p>The other problem both major networks face is that they get heavier over time. Running a full Bitcoin node requires hundreds of gigabytes of storage. Running a full Ethereum node requires terabytes. The more popular these networks get, the harder it becomes to participate in them. Valid Blockchain solves this by design, not as a future plan. The architecture keeps memory requirements permanently bounded no matter how long the network runs or how many transactions it processes.</p>
+<hr />
+<h2 id="how-tpi-consensus-works">How TPI Consensus Works</h2>
+<p>Every 10 seconds, a new block slot begins. Three validators are selected from the active pool using a seeded hash of the slot number. This selection is random but deterministic, meaning every validator can independently verify who was selected without any communication happening first.</p>
+<p>Each of the three selected validators independently builds the next block from the current transaction pool and computes a hash of it. They share those hashes with each other. If all three match, the validator with the highest merit score produces and broadcasts the block. If two of three match, the same thing happens, but the one who submitted a different hash receives a penalty. If none of them agree, a backup validator called the racer steps in and produces the block. If the racer also fails, an empty block is produced on schedule so the chain never stalls.</p>
+<p>The reason this works without slowing down as the network grows is that the consensus round is always between exactly three validators. Selecting who those three are is a local computation that each node runs independently. Adding a thousand more validators to the pool does not add any communication overhead to the process. It just makes the selection harder to predict and harder to manipulate, which makes the network more secure.</p>
+<hr />
+<h2 id="what-merit-is-and-why-it-matters">What Merit Is and Why It Matters</h2>
+<p>Merit is how Valid Blockchain determines who gets to produce blocks and who gets to participate as a validator. It replaces the role that money plays in Proof of Stake systems and that hardware plays in Proof of Work systems. A validator earns merit by showing up consistently and behaving honestly. A validator loses merit by misbehaving or going inactive for extended periods.</p>
+<p>There are two kinds of merit that work together.</p>
+<p><strong>Validator merit</strong> is earned by participating correctly in the TPI consensus process. Producing correct blocks, agreeing with the consensus outcome, and serving as a reliable backup when called upon all build validator merit. Submitting a wrong hash or failing to respond when selected reduces it.</p>
+<p><strong>Behavioral merit</strong> is earned by being a genuine, active participant over time. This includes keeping your node online consistently, having a wallet with real transaction history, and contributing to the network in ways that automated scripts cannot convincingly fake over a long period.</p>
+<p>The reason merit decay exists is important to understand. Without decay, someone could run a node aggressively for a month, accumulate a large merit score, and then coast indefinitely without contributing anything. Even worse, an attacker could spin up thousands of fake nodes, run them hard for a short period, and then use that stored merit to attack the network later. Decay prevents this. Merit erodes continuously without active participation, which means the only way to maintain standing is to genuinely keep participating. No one can stockpile merit as a weapon.</p>
+<hr />
+<h2 id="how-valid-blockchain-resists-sybil-attacks">How Valid Blockchain Resists Sybil Attacks</h2>
+<p>A Sybil attack is when a single person or organization creates many fake identities to gain disproportionate control over a network. This is the fundamental adversarial problem that every permissionless blockchain has to address.</p>
+<p>Bitcoin and Ethereum address it through cost. Bitcoin makes it expensive in electricity and hardware. Ethereum makes it expensive in token value. Valid Blockchain addresses it through time and behavior, which are fundamentally different because they cannot be purchased.</p>
+<p>The system works in layers.</p>
+<p>The first layer is a 90-day observation period. Every new node enters an observer pool when it connects. Observer nodes can see the network and participate in gossip, but they cannot produce blocks. After 90 days of demonstrated honest behavior, a node becomes eligible for promotion to the validator pool. There is no way to skip this period. Time is the cost.</p>
+<p>The second layer is the one-IP-per-identity rule. Two nodes sharing the same public IP address are treated as a single node. Someone trying to run ten fake validators from one machine gets one validator's worth of influence.</p>
+<p>The third layer is heartbeat correlation detection. This is where the system gets genuinely novel. When blocks are broadcast across the network, every peer receives them at slightly different times based on physical distance, network routing, and hardware speed. Legitimate validators scattered across different locations and different hardware show natural variation in their response timing. Fake nodes running on the same server or the same data center receive broadcasts within microseconds of each other because they share the same network connection.</p>
+<p>The system measures these timing patterns continuously during the 90-day observation window. A group of nodes that consistently respond to network events at nearly identical times, even with artificial randomness injected, produces a statistical signature that is distinguishable from genuine distributed behavior. Those nodes get flagged as co-located and receive a merit penalty that takes years of clean behavior to recover from.</p>
+<p>The reason this cannot be beaten at scale is straightforward. An attacker can write a script to inject fake timing variance. But maintaining that convincingly across hundreds or thousands of nodes, for 90 days continuously, while also meeting the behavioral merit requirements for each individual node, while also making sure the coordination itself does not show up as a detectable pattern, is not a problem that automation can solve. The humans required to oversee that would be the bottleneck. That bottleneck is the point.</p>
+<hr />
+<h2 id="how-chain-state-bloat-is-defeated">How Chain State Bloat Is Defeated</h2>
+<p>Most blockchains get heavier as they get older. Every transaction adds to the state that full nodes have to store. Valid Blockchain solves this with a simple and elegant approach.</p>
+<p>The entire chain state lives in memory during operation. Balances, transaction history, block data, all of it is held in RAM as plain data structures. No database. No disk writes during normal operation.</p>
+<p>Every six hours, the oldest block data is written to a compact archive file and removed from memory. The node then holds only the last six hours of blocks in RAM, regardless of how long the chain has been running. A validator node that has been running for five years uses approximately the same memory as one that started yesterday.</p>
+<p>Those archive files are also uploaded to Arweave, a permanent storage network, so the historical record of the chain exists independently of any single validator. When a new node joins, it syncs the current state from its peers and does not need to download years of history to start participating.</p>
+<p>The hardware requirements for running a Valid Blockchain node do not grow with the network. That is a deliberate guarantee, not a current limitation that might change later.</p>
+<hr />
+<h2 id="the-vlid-token">The VLid Token</h2>
+<p>VLid is the native token of Valid Blockchain. Understanding how it works starts with understanding what it is not.</p>
+<p>There is no pre-mine. No tokens were created before the network launched and handed to the team, investors, or advisors. There is no venture capital allocation. No portion of the supply was sold privately to funds or early backers who now hold a financial advantage over everyone else. There is no team reserve. The person who built this (me) earn the same way everyone else does, by running validator nodes and producing blocks.</p>
+<p>Every VLid that will ever exist is created by the network itself, one block at a time, as payment to the validator who produced that block. Tokens enter circulation only as a record of real work done. That is the entire issuance model.</p>
+<p>The total supply is capped at 33 million VLid. It will never exceed that number. The cap is enforced in code, not by policy.</p>
+<p><strong>How the emission schedule works</strong></p>
+<p>The 33 million VLid is released over 21 years, divided into three periods of seven years each. The first period releases 60 percent of the total supply. The second period releases 30 percent. The third period releases the remaining 10 percent. Block rewards decay at the period boundaries, not gradually over time, which gives validators a clear and predictable schedule to plan around.</p>
+<p>In the first epoch, the block reward is 0.0808 VLid per block. At one block every 10 seconds, that is roughly 504 blocks per hour and about 4.4 million blocks over seven years. The math works out so that 60 percent of the cap is distributed over that window at the fixed reward rate. When the first epoch ends, the reward rate drops to reflect the lower allocation for the second epoch, and so on.</p>
+<p>Once the 33 million cap is reached, block rewards stop and validators earn entirely from transaction fees. This mirrors the long-term model of Bitcoin, where fee revenue is expected to sustain the network after the fixed supply is exhausted.</p>
+<p><strong>What this means for validators</strong></p>
+<p>Validators earn VLid every time they produce a block. The frequency with which any given validator produces blocks depends on their merit score relative to the rest of the validator pool. Higher merit increases the probability of being selected as the producer in any given slot.</p>
+<p>This creates a direct and honest relationship between contribution and reward. A validator who participates reliably, maintains their node, and builds genuine standing in the network earns more. A validator who is inconsistent or misbehaves earns less and eventually loses selection priority to validators who have been more reliable.</p>
+<p>There is no minimum VLid balance required to become a validator. There is no lockup period. There is no slashing of token balances for misbehavior. Misbehavior is punished through merit loss, not token confiscation. A validator who behaves badly loses standing and earns fewer rewards. Their tokens are never at risk from the protocol itself.</p>
+<p><strong>Governance and ecosystem grants</strong></p>
+<p>Governance of Valid Blockchain is merit-based. Voting weight comes from a combination of validator merit score and wallet age, not from how many tokens you hold. A validator who has been participating honestly for two years has more governance influence than a wallet that recently acquired a large token balance without any participation history. This is a deliberate choice to prevent the accumulation of governance power by wealthy token holders, which is the failure mode of every token-weighted governance system.</p>
+<p>Ecosystem grants are being proposed as a formal governance mechanism. Developers and teams will be able to propose projects that benefit the Valid ecosystem, have the community vote on them using merit-weighted votes, and receive payment in VLid on a milestone basis rather than upfront. This is meant to fund the kind of work that makes the ecosystem stronger without any of the misalignment that comes from investor funding, where the funder's interests and the community's interests often diverge.</p>
+<p>The specific distribution parameters for the genesis allocation and validator rewards will be finalized in v0.9.x based on what is learned during testnet. The principles are fixed. The exact numbers are not yet final.</p>
+<hr />
+<h2 id="testnet">Testnet</h2>
+<p>The testnet is a six-month period before mainnet launch that serves two purposes.</p>
+<p>The first is finding and fixing bugs under real conditions. Real participants, real hardware diversity, real geographic distribution, and real adversarial pressure from community members actively trying to break things. Every bug found during testnet is a bug that does not make it to mainnet.</p>
+<p>The second is bootstrapping the initial validator merit set. A validator who participates consistently through the full testnet period arrives at mainnet with six months of verified behavioral history. That history is their standing in the network from day one. It is why early testnet participation is valuable beyond any token reward.</p>
+<p>Testnet participants are rewarded from the genesis allocation based on their leaderboard standing. The leaderboard tracks attendance at live sessions, participation, bug reports, bug fixes, articles, social media posts, videos, and test completions. Points are awarded manually by the project team based on verified activity.</p>
+<hr />
+<h2 id="private-deployments">Private Deployments</h2>
+<p><strong>Note:</strong> Project is in a pre-released state and pre-audit. Audits will come after testnet, but before mainnet.</p>
+<p>The same code that runs the public Valid Network can run a private network for an organization whose validators are known and trusted. A private deployment keeps the TPI consensus, signatures, encrypted transport, and in-memory state, and leaves out the public-network protections that a trusted validator set does not need.</p>
+<p>Valid Network is licensed under the Functional Source License with Apache 2.0 as the future license. Any organization can run it for its own internal use, and each version becomes fully open under Apache 2.0 two years after it is released. Offering Valid, or a network built from it, to others as a commercial product or service is licensed separately.</p>
+<p><strong>Who private networks are for</strong></p>
+<p>The use cases are broad and concrete.</p>
+<p>Hospital and healthcare networks need an auditable shared ledger that does not depend on any single vendor, does not expose patient data to external networks, and provides Byzantine fault tolerance among the trusted parties operating it. A private Valid network with hospital-operated validator nodes provides exactly this. Patient records, access logs, prescription data, and test results can be recorded with immutable timestamps. No public chain is involved. No tokens are required.</p>
+<p>Warehouse and supply chain operations involve multiple parties who need a shared ledger they can all trust. Suppliers, warehouses, logistics companies, and retailers each have their own systems and their own incentives. A private Valid network with permissioned validator access for each party provides a neutral coordination layer where inventory movements are recorded as transactions and disputes are resolved by querying the chain rather than by trusting any single party's records.</p>
+<p>Corporate and enterprise backends often need multi-party agreement on financial records, approval workflows, and audit trails without giving any single department unilateral authority to modify records. A private Valid network where each relevant department runs a validator node provides this. A finance department, a legal department, and an operations department running three validator nodes cannot collectively falsify records without all three agreeing, which means the records are trustworthy in a way that a single database controlled by one department is not.</p>
+<p>Gaming companies need a fast, cheap, tamper-evident ledger for in-game economies. Players need to trust that the game operator cannot arbitrarily change their balances or fabricate transaction histories. A private Valid network configured for high-throughput operation can handle in-game asset transfers, marketplace transactions, and achievement records with sub-second finality. The game operator controls the validator set and maintains operational control while providing players with an auditable, verifiable record.</p>
+<p>Community organizations, cooperatives, credit unions, and neighborhood groups can run a private Valid network for their own community without any cloud vendor dependency and without any single member having unilateral control over the ledger. The 2GB RAM minimum makes this accessible to communities without significant technical resources. The TPI consensus means the ledger is controlled collectively by whoever operates the validator nodes, not by any one person.</p>
+<hr />
+<h2 id="what-is-coming">What Is Coming</h2>
+<p>The following projects are in active development or planned for release after mainnet launch.</p>
+<p><strong>VNS (Valid Name Service)</strong> is a naming layer that lets validators, addresses, and services register human-readable names on the network. Instead of sharing a long cryptographic address, a validator can register a name that others can use to find their node or send them tokens. VNS uses own-forever registration rather than recurring renewal, which means names cannot be lost because someone forgot to renew them on time. There is no separate token for VNS. Everything settles in VLid. VNS is in active development and will be released post-v1.0.</p>
+<p><strong>VIPFS (Valid IPFS)</strong> is a distributed storage layer for the Valid ecosystem. Files, websites, applications, media, and arbitrary data can be stored on VIPFS with cryptographic content addressing, meaning the address of a piece of content is derived from the content itself rather than from where it happens to be stored. This makes it impossible to serve different content under the same address without detection. VIPFS will eventually replace Arweave as the archive storage backend for the blockchain itself. The current architecture is already designed to make that transition seamless when the time comes. VIPFS is in active design and will be released post-v1.0.</p>
+<p><strong>Valid Browser</strong> is a fork of the Brave browser with Valid Blockchain integrations built in at the browser level rather than added as extensions. The browser has a built-in L1 wallet, native resolution of VNS names so users can navigate to human-readable addresses in the URL bar, and native access to VIPFS content without any configuration. It supports direct payment signing and blockchain interactions without exposing private keys to web content. The initial scope is the Valid network integrations specifically. The browser will expand from there rather than attempting to replicate everything Brave does from the start.</p>
+<p><strong>Valid Terminal</strong> is a security-hardened terminal emulator forked from Alacritty. It includes filtering in both the keyboard input path and the paste path to catch homoglyph attacks, which are a class of attack where characters that look identical to normal letters are used to disguise malicious commands. For people running validator nodes and interacting regularly with a terminal, this is a meaningful security improvement over standard terminal emulators.</p>
+<p><strong>Valid Vault</strong> is a local password manager with fingerprint authentication and encrypted sync built for the Valid ecosystem. It stores credentials locally rather than in the cloud, uses hardware-based authentication where available, and synchronizes encrypted vaults across devices without any third party having access to the unencrypted contents.</p>
+<hr />
+<h2 id="how-to-get-involved">How to Get Involved</h2>
+<p>The testnet is the starting point. Join the Discord, run a node, show up to live development sessions, report bugs, write about the project, and help build something that belongs to the people running it.</p>
+<p>The code is public and the architecture is highly documented. The whitepaper covers the full technical detail. All of it lives in the repository.</p>
+<p><strong>Repository:</strong> <a href="https://github.com/validprivacy/valid-network" target="_blank" rel="noopener">https://github.com/validprivacy/valid-network</a><br />
+<strong>Discord:</strong> <a href="https://discord.gg/2SP383cJs9" target="_blank" rel="noopener">https://discord.gg/2SP383cJs9</a></p>
+<hr />
+<p><em>Copyright (c) 2024-2026 Michael J Carter. Licensed under FSL-1.1-ALv2.</em></p>
+
+</div>
+  <div class="doc-links"><a class="btn quiet" href="network.html">Valid Network</a><a class="btn quiet" href="network-whitepaper.html">Whitepaper</a><a class="btn quiet" href="https://github.com/validprivacy/valid-network" target="_blank" rel="noopener">Source code</a></div>
+</div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><svg viewBox="0 0 342 403" aria-hidden="true"><use href="#vv-mark"/></svg>VALID <span class="brand-sub">PRIVACY</span></a>
+        <p class="foot-note">Software that keeps your data on your own devices.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul><li><a href="vault.html">Valid Vault</a></li><li><a href="symphony.html">Valid Symphony</a></li><li><a href="https://chromewebstore.google.com/detail/valid-vault-password-mana/fkpfaemmphmakebhejhaegjgcnieeoab" target="_blank" rel="noopener">Chrome Web Store</a></li></ul>
+      </div>
+      <div>
+        <h4>Developers</h4>
+        <ul><li><a href="https://github.com/validprivacy" target="_blank" rel="noopener">GitHub</a></li><li><a href="vault-guide.html">Valid Vault User Guide</a></li><li><a href="https://github.com/validprivacy/valid-vault/blob/main/ROADMAP.md" target="_blank" rel="noopener">Valid Vault Roadmap</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="company.html">About</a></li><li><a href="network.html">Valid Network</a></li><li><a href="network.html#foundation">The Valid Foundation</a></li><li><a href="company.html#security">Security</a></li><li><a href="company.html#contact">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-base"><span>&copy; 2026 Valid Privacy</span><span><a href="vault-privacy.html">Valid Vault Privacy Policy</a></span></div>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

@@ -227,5 +227,13 @@ h3 { font-size: 18px; font-weight: 700; line-height: 1.35; }
 .search-count { color: var(--text-dim); font-size: 12px; min-width: 70px; text-align: right; white-space: nowrap; }
 mark.hit { background: var(--faint); color: var(--text); border-radius: 2px; padding: 0 1px; }
 mark.hit-active { background: var(--text); color: var(--bg); }
+.doc-page pre { background: var(--bg-raise); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin: 0 0 16px; }
+.doc-page code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; color: var(--text); }
+.doc-page hr { border: 0; border-top: 1px solid var(--border); margin: 32px 0; }
+.doc-page .paper h1 { font-size: clamp(28px, 3.8vw, 40px); }
+.doc-page .paper hr { display: none; }
+.doc-page .paper a { word-break: break-word; }
+.doc-page .paper h4 { font-size: 16px; margin: 20px 0 8px; color: var(--text); }
+.doc-page .paper table { display: block; overflow-x: auto; }
 .doc-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
 @media (max-width: 640px) { .toc-links, .profiles { grid-template-columns: 1fr; } .search-bar { flex: 1; } .search-field { flex: 1; min-width: 0; } .search-bar input { width: 100%; min-width: 0; } .search-count { min-width: 0; } }

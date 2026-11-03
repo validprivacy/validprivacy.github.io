@@ -254,7 +254,9 @@
 
 <section id="keys">
     <h2>Your Master Key</h2>
-    <p>Your master key is what makes your vault readable. It only ever leaves a device inside a <strong>key package</strong>, locked under a passphrase plus three security questions you choose, and stretched through <strong>1,000,000 rounds of PBKDF2</strong>. The Share Master Key QR code and the Export Key file both carry that same package.</p>
+    <p>Your master key is what makes your vault readable. It only ever leaves a device inside a <strong>key package</strong>, locked under a passphrase, plus three additional answers you choose, and stretched through <strong>1,000,000 rounds of PBKDF2</strong>. The Share Master Key QR code and the Export Key file both carry that same package.</p>
+
+    <p>The passphrase must stand on its own: at least 12 characters with a letter, a number, and a symbol, screened against common passwords. The three answers are mixed into that same derivation as extra secret input, so they can only add work for an attacker. They are never used to recover or reset anything, and nothing is stored to check them against. For comparison, Chrome and Google Password Manager export passwords as a plain CSV file, and Samsung Pass protects its export with one password.</p>
 
     <h3>Why a captured QR or stolen file is useless</h3>
     <ul>

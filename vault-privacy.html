@@ -43,7 +43,7 @@
   <li>Your unlock methods, stored only as wrapped copies of the master key, never as passwords or password hashes</li>
   <li><strong>Phone app only:</strong> which Android apps a saved login is linked to, with each app's signing certificate, so a login fills only in the app it belongs to</li>
 </ul>
-<p>Settings are stored on the device without encryption, since they hold no secrets: the auto-lock time, QR timeout, password generator length, the key and vault name, and day or night mode. <strong>Phone app only:</strong> the private browser also keeps its search engine choice, your new tab quick view sites, and the sites where you turned tracker blocking off.</p>
+<p>Settings are stored on the device without encryption, since they hold no secrets: the auto-lock time, QR timeout, password generator length, the key and vault name, and day or night mode. <strong>Phone app only:</strong> also when the vault locks after you leave the app and whether screenshots are allowed, and the private browser keeps its search engine choice, your new tab quick view sites, and the sites where you turned tracker blocking off.</p>
 <p><strong>Extension:</strong> the vault is kept in the extension's own storage in your browser profile, along with an encrypted backup copy that restores the vault if the browser clears site data. When you submit a login form, the captured login is held in the browser's session memory for up to 45 seconds so the save prompt can survive a sign-in redirect. It is cleared when you answer the prompt, when the vault locks, or when the browser closes.</p>
 <p><strong>Phone app:</strong> the vault is kept in the app's private storage. The app's data, including the vault, its settings, and the private browser's data, is left out of Android backups and device-to-device transfers. Fingerprint keys stay in the phone's hardware keystore.</p>
 
@@ -84,7 +84,7 @@
 
 <h2>Activity and Auto-Lock</h2>
 <p><strong>Extension:</strong> to keep the vault open while you are using your browser, the extension notes that real mouse, scroll, click, or key activity happened and resets the auto-lock timer. It does not record what you typed, what you clicked, or where. Only the time of the last activity is kept, in memory, and it is cleared when the browser closes.</p>
-<p><strong>Phone app:</strong> the auto-lock timer resets when you use the app. Only the time of the last activity is kept, in memory.</p>
+<p><strong>Phone app:</strong> the auto-lock timer resets when you use the app, and the vault also locks after you leave the app, after the time you choose in Settings. Only the time of the last activity and the moment you left are kept, in memory.</p>
 
 <h2>Device-to-Device Sync and Files</h2>
 <p><strong>Both the extension and the phone app:</strong> the vault moves between your own devices by QR code or by an exported file. One device shows the encrypted vault as a QR code and the other scans it, or you save the encrypted file and open it on the other device yourself. The vault stays encrypted throughout, and the master key only leaves a device wrapped under a passphrase, plus three additional answers you choose. No server or outside service is involved.</p>

@@ -537,42 +537,16 @@ Archive-Version:   &lt;version&gt;
 <hr />
 <h2 id="9-token-economics">9. Token Economics</h2>
 <h3 id="91-vlid-supply-model">9.1 VLid Supply Model</h3>
-<p>VLid (pronounced "valid") is the native token of Valid Blockchain. The supply model is designed around one principle: tokens mint only when validated work is proven.</p>
+<p>VLid (pronounced "valid") is the native token of Valid Blockchain. The supply model is built on a fixed cap, with issuance outside the genesis allocations tied to validated work.</p>
 <ul>
 <li><strong>Total cap:</strong> 33 million VLid</li>
 <li><strong>Decimal places:</strong> 9 (1 VLid = 1,000,000,000 nanoVLid)</li>
-<li><strong>Emission timeline:</strong> 21 years across 3 epochs of 7 years each</li>
-<li><strong>Minting trigger:</strong> Block production only</li>
+<li><strong>Genesis allocations:</strong> set at genesis, each with a cliff and a vesting schedule</li>
+<li><strong>Minting trigger:</strong> block production, for all supply outside the genesis allocations</li>
 </ul>
-<p>There is no pre-mine, VC allocations, foundation treasury, and no team reserve. That would put the blockchain's <strong>users</strong> in debt before the blockchain even launches. The genesis bootstrap allocation exists solely to seed the initial validator set and is the <strong>only</strong> non-block-production source of initial supply.</p>
+<p>Genesis allocations may include partners, contributors, testnet participants, and the Valid Foundation. All remaining supply is minted only as block rewards, when a validator produces a block.</p>
 <h3 id="92-emission-schedule">9.2 Emission Schedule</h3>
-<table>
-<thead>
-<tr>
-<th>Epoch</th>
-<th>Years</th>
-<th>Fraction of Total Supply</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>0-7</td>
-<td>60%</td>
-</tr>
-<tr>
-<td>1</td>
-<td>7-14</td>
-<td>30%</td>
-</tr>
-<tr>
-<td>2</td>
-<td>14-21</td>
-<td>10%</td>
-</tr>
-</tbody>
-</table>
-<p>Within each epoch, block rewards are fixed and emitted per block produced. The Epoch 0 block reward is 0.0808 VLid per block. Rewards decay at epoch boundaries, not continuously, providing predictable emission curves.</p>
+<p>Block rewards are fixed within each period of the schedule and emitted per block produced. Rewards step down at period boundaries, not continuously, providing a predictable emission curve. The schedule, including the length of each period and the reward per block, runs with working values on testnet and will be finalized before mainnet.</p>
 <h3 id="93-block-rewards-and-fees">9.3 Block Rewards and Fees</h3>
 <p>Block rewards are paid to the validator that produces the block. Fees collected from transactions in a block are also paid to the block producer. The fee distribution model is temporary and will be properly sorted in v0.9.x, before mainnet launch.</p>
 <p>The reward minting function enforces the supply cap strictly:</p>
@@ -585,10 +559,10 @@ Archive-Version:   &lt;version&gt;
 </code></pre>
 <p>When the cap is reached, validator compensation transitions entirely to transaction fees.</p>
 <h3 id="94-genesis-and-validator-reward-allocations">9.4 Genesis and Validator Reward Allocations</h3>
-<p>The genesis allocation and specific validator reward parameters are subject to adjustment in v0.9.x as the validator set size and network characteristics become known through testnet operation. The distribution principles are as follows: merit-based, no pre-mine, no team reserve, and are fixed. The specific numerical parameters will be finalized before mainnet launch based on testnet data.</p>
+<p>The sizes of the genesis allocations, their cliffs and vesting schedules, and the validator reward parameters are to be determined. They will be finalized before mainnet launch, informed by the validator set size and network characteristics observed during testnet.</p>
 <h3 id="95-governance">9.5 Governance</h3>
 <p>Governance of Valid Blockchain is merit-based. Voting weight is determined by validator merit score and wallet age, not token balance. This prevents token-weighted governance from concentrating decision-making power among large holders.</p>
-<p>Ecosystem grants are being proposed as a formal governance mechanism. Grants would be denominated in VLid and allocated from transaction and on-chain fees, funding development work that strengthens the Valid ecosystem. Approved grants would be distributed on a milestone basis, with payment contingent on verified delivery. This model avoids the speculation and misalignment of traditional VC funding while providing sustainable support for ecosystem development.</p>
+<p>Ecosystem grants are being proposed as a formal governance mechanism. Grants would be denominated in VLid and allocated from transaction and on-chain fees, funding development work that strengthens the Valid ecosystem. Approved grants would be distributed on a milestone basis, with payment contingent on verified delivery. This model provides sustainable support for ecosystem development, with payment tied to verified delivery.</p>
 <hr />
 <h2 id="10-testnet">10. Testnet</h2>
 <h3 id="101-purpose">10.1 Purpose</h3>
@@ -642,7 +616,7 @@ Archive-Version:   &lt;version&gt;
 </ul>
 <h3 id="104-testnet-rewards">10.4 Testnet Rewards</h3>
 <p>Testnet participation is rewarded through two mechanisms.</p>
-<p><strong>Genesis allocation distribution.</strong> The genesis bootstrap allocation of VLid will be distributed to testnet participants based on their leaderboard performance at the conclusion of the testnet period. Leaderboard standing is tracked by the Observer Bot in the Discord server, which records attendance, participation, bug finds, bug fixes, notable contributions, social media posts, articles, videos, and test completions. Points are awarded manually by myself, Rook, on verified activity. The Observer Bot is testnet scaffolding. It will be retired after mainnet launch.</p>
+<p><strong>Genesis allocation distribution.</strong> Testnet participants will receive a share of the genesis allocations based on their leaderboard performance at the conclusion of the testnet period. Leaderboard standing is tracked by the Observer Bot in the Discord server, which records attendance, participation, bug finds, bug fixes, notable contributions, social media posts, articles, videos, and test completions. Points are awarded manually by myself, Rook, on verified activity. The Observer Bot is testnet scaffolding. It will be retired after mainnet launch.</p>
 <p><strong>Bootstrap merit.</strong> The behavioral merit accumulated during testnet carries forward to mainnet as each validator's starting standing. This is not a small reward. A validator who has participated consistently for six months arrives at mainnet with a verified behavioral history that gives them genuine selection priority over any fresh node that connects at mainnet launch. This bootstrap merit is why testnet participation is valuable beyond any token reward. It is the foundation of each validator's mainnet standing.</p>
 <p>The combination of these two rewards creates a strong alignment between testnet participation quality and mainnet success. The validators who contribute most to making testnet succeed are the ones who arrive at mainnet in the strongest position, ready to produce.</p>
 <hr />
@@ -672,7 +646,7 @@ Archive-Version:   &lt;version&gt;
 <h3 id="122-ecosystem-grants">12.2 Ecosystem Grants</h3>
 <p>Ecosystem grants are being proposed as a formal governance mechanism within the Valid ecosystem. The grant model works as follows:</p>
 <p>Developers or teams propose a project that would benefit the Valid ecosystem. The proposal includes a technical specification, a milestone plan, and a requested grant amount denominated in VLid. The validator community votes on the proposal using merit-weighted voting. Approved proposals receive milestone-based disbursements. Payment is contingent on verified delivery of each milestone, not on submission of the proposal.</p>
-<p>This model is designed to fund the kind of work that makes the ecosystem stronger without creating the misalignment of traditional VC funding. A VC-funded project has obligations to its investors. A grant-funded project has obligations to the community that funded it. The incentives are aligned differently, and the resulting software is typically more aligned with community needs.</p>
+<p>This model is designed to fund the kind of work that makes the ecosystem stronger, with every disbursement tied to verified delivery of a milestone.</p>
 <h3 id="123-protocol-parameter-governance">12.3 Protocol Parameter Governance</h3>
 <p>Protocol parameters including merit decay rates, promotion thresholds, correlation detection sensitivity, and fee distribution will be subject to community governance vote before and after mainnet launch. Parameters will be adjusted based on observed network behavior during testnet, with the final values confirmed by validator vote before the mainnet genesis.</p>
 <hr />

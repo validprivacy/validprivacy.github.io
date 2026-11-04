@@ -17,7 +17,7 @@
 <header class="site-head">
   <div class="wrap head-row">
     <a class="brand" href="index.html" aria-label="Valid Privacy home"><svg viewBox="0 0 342 403" aria-hidden="true"><use href="#vv-mark"/></svg>VALID <span class="brand-sub">PRIVACY</span></a>
-    <nav class="tabs" aria-label="Main"><a href="vault.html">Valid Vault</a><a href="symphony.html">Valid Symphony</a><a href="network.html" aria-current="page">Valid Network</a><a href="company.html">Company</a></nav>
+    <nav class="tabs" aria-label="Main"><a href="network.html" aria-current="page">Valid Network</a><a href="vault.html">Valid Vault</a><a href="symphony.html">Valid Symphony</a><a href="company.html">Company</a></nav>
     <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to night mode" title="Switch between day and night"><span class="when-night"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></span><span class="when-day"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></span></button>
   </div>
 </header>
@@ -685,9 +685,9 @@ Archive-Version:   &lt;version&gt;
 <p>The publication sidecar is already designed with a replaceable backend interface. When VIPFS reaches production readiness, switching the archive publication backend from Arweave to VIPFS requires no changes to the archive or chain state logic. The transition will be seamless for validators.</p>
 <p>VIPFS validators and users contribute storage and bandwidth based on what they store and access, creating a natural economic alignment between content demand and supply. Content moderation and illegal-content handling will be explicitly defined before implementation. This is not deferred.</p>
 <h3 id="144-valid-browser">14.4 Valid Browser</h3>
-<p>Valid Browser is a fork of Brave with Valid-native integrations built in at the browser level. It is in active development.</p>
+<p>Valid Browser is a modified Chromium browser with Valid-native integrations built in at the browser level. An early mobile version is live, bundled with the Valid Vault app on Android, with tracker blocking, link cleaning, an optional Tor mode, and built-in Valid Vault autofill. The blockchain integrations are in active development.</p>
 <p>The browser provides built-in L1 wallet support as a first-class feature rather than an extension. It natively resolves Valid Name Service addresses, allowing users to navigate to <code>app.vns</code> in the URL bar. It provides native access to VIPFS content without requiring any configuration. It supports direct L1 payment signing and application-layer interactions without exposing private keys to web content.</p>
-<p>The initial scope is constrained to Valid network integrations. The browser will not attempt to replicate the full Brave feature set immediately. It will add Valid-specific capabilities on top of the Brave base and expand from there.</p>
+<p>The initial integration scope is constrained to the Valid network. Valid-specific capabilities are added on top of the Chromium base and will expand from there.</p>
 <h3 id="145-valid-terminal">14.5 Valid Terminal</h3>
 <p>Valid Terminal is a security-hardened terminal emulator forked from Alacritty, in active development. It includes homoglyph attack filtering in both keyboard input and paste paths, preventing a class of attack where visually similar Unicode characters are used to disguise malicious commands.</p>
 <h3 id="146-valid-vault">14.6 Valid Vault</h3>
@@ -795,7 +795,7 @@ Archive-Version:   &lt;version&gt;
       </div>
       <div>
         <h4>Products</h4>
-        <ul><li><a href="vault.html">Valid Vault</a></li><li><a href="symphony.html">Valid Symphony</a></li><li><a href="network.html">Valid Network</a></li><li><a href="https://chromewebstore.google.com/detail/valid-vault-password-mana/fkpfaemmphmakebhejhaegjgcnieeoab" target="_blank" rel="noopener">Chrome Web Store</a></li></ul>
+        <ul><li><a href="network.html">Valid Network</a></li><li><a href="vault.html">Valid Vault</a></li><li><a href="symphony.html">Valid Symphony</a></li><li><a href="https://chromewebstore.google.com/detail/valid-vault-password-mana/fkpfaemmphmakebhejhaegjgcnieeoab" target="_blank" rel="noopener">Chrome Web Store</a></li></ul>
       </div>
       <div>
         <h4>Developers</h4>

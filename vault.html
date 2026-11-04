@@ -50,15 +50,15 @@
   <div class="wrap">
     <div class="section-head"><h2>Features</h2></div>
     <div class="grid three">
-      <div class="card"><h3>Unlock</h3><p>Fingerprint or device PIN through the browser's platform authenticator or the Android Keystore, with a master password as the fallback. The vault locks itself after the idle time you choose.</p></div>
+      <div class="card"><h3>Unlock</h3><p>Fingerprint or device PIN through the browser's platform authenticator or the Android Keystore, with a master password as the fallback. The vault locks itself after the idle time you choose, and on the phone also when you leave the app.</p></div>
       <div class="card"><h3>Autofill</h3><p>Login and personal info fields get a small V tag. You pick what to fill, and only that value is placed in the field. Nothing is ever copied to the clipboard.</p></div>
       <div class="card"><h3>Two-factor codes</h3><p>A login can hold its 2FA code. Valid Vault shows the live code and fills it into the site's code box, on the site the login belongs to.</p></div>
       <div class="card"><h3>Password generator</h3><p>New password fields get their own V that fills a strong random password into both boxes, following the site's length and character rules.</p></div>
       <div class="card"><h3>QR transfer</h3><p>One device shows an animated QR code and the other scans it. The receiver can join at any frame and finishes shortly after it has read enough of them.</p></div>
-      <div class="card"><h3>Backups</h3><p>The vault and the protected key export as separate encrypted files that can live on a USB drive as an offline copy you hold yourself.</p></div>
+      <div class="card"><h3>Backups</h3><p>You are the custodian. Every device is a live copy, and the vault and the protected key export as separate encrypted files you can keep on a USB drive as cold copies, with no server holding anything.</p></div>
       <div class="card"><h3>Import</h3><p>Brings logins and 2FA codes from CSV exports and from Bitwarden, 1Password, Dashlane, and Samsung Pass files, read entirely on the device.</p></div>
       <div class="card"><h3>Crypto wallets</h3><p>Seed phrases have their own section with a separate unlock and offline word checking, and they are never filled into web pages.</p></div>
-      <div class="card"><h3>Private browser</h3><p>On Android, a Chromium browser with tracker blocking, link cleaning, an optional Tor mode, and a full wipe when it closes.</p></div>
+      <div class="card"><h3>Private browser</h3><p>On Android, a Chromium browser with tracker blocking, link cleaning, an optional Tor mode, and a full wipe when it closes. Its own phishing and malware protection stands in for Google Safe Browsing.</p></div>
     </div>
   </div>
 </section>
@@ -68,7 +68,7 @@
     <div>
       <h2>Security model</h2>
       <p style="color:var(--text-dim);margin-top:14px">The complete model, including the reasoning behind each design choice, is published with the source code.</p>
-      <div class="btn-row" style="margin-top:22px"><a class="btn quiet" href="https://github.com/validprivacy/valid-vault#security-model" target="_blank" rel="noopener">Read the security model</a><a class="btn quiet" href="https://github.com/validprivacy/valid-vault/blob/main/ROADMAP.md#design-decisions" target="_blank" rel="noopener">Design decisions</a></div>
+      <div class="btn-row" style="margin-top:22px"><a class="btn quiet" href="https://github.com/validprivacy/valid-vault#security-model" target="_blank" rel="noopener">Read the security model</a><a class="btn quiet" href="https://github.com/validprivacy/valid-vault/blob/main/ROADMAP.md#design-decisions" target="_blank" rel="noopener">Design decisions</a><a class="btn quiet" href="https://github.com/validprivacy/valid-vault/blob/main/THREAT_MODEL.md" target="_blank" rel="noopener">Threat model</a><a class="btn quiet" href="https://github.com/validprivacy/valid-vault/blob/main/SECURITY.md" target="_blank" rel="noopener">Report a vulnerability</a></div>
     </div>
     <ul class="ticks">
       <li>A random 256-bit master key encrypts the vault with AES-256-GCM, and it is wrapped separately under each unlock method.</li>
@@ -77,6 +77,8 @@
       <li>A key leaving a device is wrapped under a passphrase, plus three additional answers, at 1,000,000 rounds.</li>
       <li>Web pages never receive the master key or a 2FA setup key, only the single value you chose to fill.</li>
       <li>Logins, wallets, and bookmarks are each sealed as one encrypted blob, so storage reveals no site names or usernames.</li>
+      <li>Logins fill only on the site address they were saved for, so a look-alike phishing site gets nothing, with no block list needed.</li>
+      <li>Every change runs the full test suite in the open on GitHub, including fuzz tests of the vault file, key file, and QR parsers.</li>
     </ul>
   </div>
 </section>

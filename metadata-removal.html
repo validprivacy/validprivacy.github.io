@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metadata Removal | Valid Privacy</title>
+<meta name="description" content="Remove location, device details, dates, and other hidden data from photos, videos, and audio, locally on your own device. A free service from Valid Privacy.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-MMiRnOs6BcmVdbpA05g12t9/souy22M4Df3Hh++27nM='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="site.css">
+<script>try{if(localStorage.getItem('valid-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="vv-mark-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color: var(--mark-1)"/><stop offset="1" style="stop-color: var(--mark-2)"/></linearGradient><clipPath id="vv-mark-clip"><path d="M4,4 L104,4 L171,262 L238,4 L338,4 L171,399 Z"/></clipPath><mask id="vv-mark-mask"><g fill="#fff"><rect x="0" y="8.00" width="342" height="14.44"/><rect x="0" y="36.89" width="342" height="14.44"/><rect x="0" y="65.78" width="342" height="14.44"/><rect x="0" y="94.67" width="342" height="14.44"/><rect x="0" y="123.56" width="342" height="14.44"/><rect x="0" y="152.44" width="342" height="14.44"/><rect x="0" y="181.33" width="342" height="14.44"/><rect x="0" y="210.22" width="342" height="14.44"/><rect x="0" y="239.11" width="342" height="14.44"/><rect x="0" y="268.00" width="342" height="14.44"/><rect x="0" y="296.89" width="342" height="14.44"/><rect x="0" y="325.78" width="342" height="14.44"/><rect x="0" y="354.67" width="342" height="14.44"/><rect x="0" y="383.56" width="342" height="14.44"/></g></mask></defs><symbol id="vv-mark" viewBox="0 0 342 403"><g clip-path="url(#vv-mark-clip)"><rect width="342" height="403" fill="url(#vv-mark-fill)" mask="url(#vv-mark-mask)"/></g></symbol></svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="index.html" aria-label="Valid Privacy home"><svg viewBox="0 0 342 403" aria-hidden="true"><use href="#vv-mark"/></svg>VALID <span class="brand-sub">PRIVACY</span></a>
+    <nav class="tabs" aria-label="Main"><details class="menu"><summary>Valid Network<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></summary><div class="menu-list"><a href="network.html">Overview</a><a href="network-whitepaper.html">Whitepaper</a><a href="network-litepaper.html">Litepaper</a><a href="network.html#privacy">Network Privacy</a><a href="https://github.com/validprivacy/valid-network" target="_blank" rel="noopener">Source Code</a></div></details><details class="menu"><summary>Valid Vault<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></summary><div class="menu-list"><a href="vault.html">Overview</a><a href="vault-guide.html">User Guide</a><a href="vault-privacy.html">Privacy Policy</a><a href="https://chromewebstore.google.com/detail/valid-vault-password-mana/fkpfaemmphmakebhejhaegjgcnieeoab" target="_blank" rel="noopener">Chrome Web Store</a><a href="https://github.com/validprivacy/valid-vault" target="_blank" rel="noopener">Source Code</a></div></details><details class="menu"><summary>Valid Symphony<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></summary><div class="menu-list"><a href="symphony.html">Overview</a><a href="symphony.html#principles">Principles</a><a href="https://github.com/validprivacy/valid-symphony" target="_blank" rel="noopener">Source Code</a></div></details><details class="menu"><summary>Company<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></summary><div class="menu-list"><a href="company.html">About</a><a href="company.html#security">Security</a><a href="company.html#contact">Contact</a></div></details><details class="menu current"><summary>Tools<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></summary><div class="menu-list"><a href="metadata-removal.html" aria-current="page">Metadata Removal</a><a href="metadata-removal-privacy.html">Metadata Removal Privacy Policy</a></div></details></nav>
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to night mode" title="Switch between day and night"><span class="when-night"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></span><span class="when-day"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="hero mr-hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="chip live">Free service</span></div>
+    <h1 class="title">Metadata Removal</h1>
+    <p class="lead">Photos, videos, and audio files carry hidden details: where they were made, on what device, and when. Remove them before you share. Metadata Removal runs locally, on your own device, and your files are never uploaded.</p>
+  </div>
+</section>
+
+<section class="band mr-band" id="remove">
+  <div class="wrap">
+    <div class="card mr-tool">
+      <div class="mr-drop" id="mr-drop">
+        <p class="mr-drop-title">Drop files or folders here</p>
+        <div class="btn-row">
+          <button class="btn" type="button" id="mr-pick-files">Choose files</button>
+          <button class="btn quiet" type="button" id="mr-pick-folder">Choose a folder</button>
+        </div>
+        <input type="file" id="mr-files" multiple hidden accept=".jpg,.jpeg,.png,.webp,.mp4,.mov,.m4v,.m4a,.mp3,.wav,.flac,image/jpeg,image/png,image/webp,video/mp4,video/quicktime,audio/*">
+        <input type="file" id="mr-folder" webkitdirectory multiple hidden>
+        <label class="mr-check"><input type="checkbox" id="mr-rename"> Rename the clean copies to numbers. File names like IMG_20260102_030405 can show when something was taken.</label>
+        <p class="mr-fine">JPEG, PNG, WebP, MP4, MOV, M4A, MP3, WAV, and FLAC. Your originals are never changed.</p>
+      </div>
+      <p class="mr-status" id="mr-status" aria-live="polite" hidden></p>
+      <div class="mr-summary" id="mr-summary" hidden></div>
+      <div class="btn-row mr-save" id="mr-save-row" hidden>
+        <button class="btn" type="button" id="mr-save-download">Download as zip</button>
+        <button class="btn quiet" type="button" id="mr-save-folder">Save to a folder</button>
+        <button class="btn quiet" type="button" id="mr-reset">Start over</button>
+      </div>
+      <div class="table-wrap mr-results" id="mr-results" hidden></div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="how">
+  <div class="wrap">
+    <div class="section-head"><h2>How to use it</h2></div>
+    <ol class="steps mr-steps">
+      <li><h3>Choose your files</h3><p>Pick files, pick a whole folder, or drag either onto the box. Folders inside folders are included.</p></li>
+      <li><h3>See what was hidden</h3><p>Each file is checked locally on your device, and the list shows what it was carrying, including GPS coordinates when a photo has them.</p></li>
+      <li><h3>Save clean copies</h3><p>Download them as one zip, or on Chrome and Edge, save them straight into a folder you choose. Pick an empty folder, since files with the same name there are replaced.</p></li>
+      <li><h3>Share the copies</h3><p>Share the clean copies and keep your originals. Your originals are never touched.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="why">
+  <div class="wrap">
+    <div class="section-head"><h2>Why it matters</h2><p>Metadata travels with a file wherever it goes, and most people never see it.</p></div>
+    <div class="grid three">
+      <div class="card"><h3>Where you were</h3><p>Phones save GPS coordinates in photos and videos by default. A picture taken at home can lead a stranger to your address, and a few photos can map your home, work, school, and daily routine.</p></div>
+      <div class="card"><h3>What you used</h3><p>Camera make, model, lens, and sometimes a serial number. A serial number can tie photos posted on different accounts back to the same device and the same person.</p></div>
+      <div class="card"><h3>When it happened</h3><p>Exact dates and times, down to the second, show when you were somewhere and when you were away from home.</p></div>
+      <div class="card"><h3>Who made it</h3><p>Author and owner names, copyright fields, and the names typed into editing apps can carry your real name into a file you meant to share anonymously.</p></div>
+      <div class="card"><h3>What you cut out</h3><p>Some editors leave a small preview of the original inside the edited file, so a cropped photo can still hold a copy of the uncropped one. Editing history can also keep earlier file names and settings.</p></div>
+      <div class="card"><h3>Audio and video too</h3><p>Videos carry location, recording time, and device details. Audio files carry names, comments, encoder details, and embedded cover art.</p></div>
+    </div>
+    <p class="mr-note">Some apps remove part of this when you post, but many paths keep it: email attachments, cloud storage links, forums, marketplaces, and "send as file" in messaging apps all pass along the original file. Even when a platform strips metadata before others see it, the platform itself still received the original.</p>
+  </div>
+</section>
+
+<section class="band alt" id="what">
+  <div class="wrap">
+    <div class="section-head"><h2>What it removes and what it keeps</h2></div>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>File type</th><th>Removed</th><th>Kept exactly as it was</th></tr></thead>
+        <tbody>
+          <tr><td>JPEG photos</td><td>EXIF (GPS, device, dates, serial numbers, owner), XMP editing history, IPTC captions and creator, comments, maker data, hidden preview images, and data hidden after the image</td><td>Every compressed byte of the picture, its color profile, and the rotation, so phone photos stay upright</td></tr>
+          <tr><td>PNG images</td><td>Text fields (author, software, descriptions), EXIF, XMP, and timestamps</td><td>Every pixel and the color information</td></tr>
+          <tr><td>WebP images</td><td>EXIF and XMP</td><td>The picture, animation, and color profile</td></tr>
+          <tr><td>MP4, MOV, and M4A</td><td>Location, device make and model, software, titles and tags, comments, XMP, recording dates, and the encoder name</td><td>Every byte of the audio and video streams</td></tr>
+          <tr><td>MP3</td><td>ID3 and APE tags, including titles, artists, comments, dates, and cover art</td><td>Every audio frame</td></tr>
+          <tr><td>WAV</td><td>INFO tags, broadcast details (originator and recording date), ID3 tags, and XMP</td><td>The audio data and format</td></tr>
+          <tr><td>FLAC</td><td>Vorbis comments and embedded pictures</td><td>The audio frames and seek points</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mr-note"><strong>It cannot remove what is in the picture or recording itself:</strong> faces, street signs, reflections, landmarks, voices, or background sounds. Encoder settings written inside a video stream stay, because removing them would mean re-encoding the video. When you save a file, your computer gives the copy a new date of its own. HEIC and AVIF photos, GIF, TIFF, RAW, and other formats are left out and listed as not supported, so nothing is ever passed through unclean.</p>
+  </div>
+</section>
+
+<section class="band" id="better">
+  <div class="wrap">
+    <div class="section-head"><h2>Why this one</h2></div>
+    <div class="grid two">
+      <div class="card"><h3>Fully local</h3><p>Most "remove metadata online" sites upload your file to their server to clean it, which hands them the exact data you are trying to protect. This page does all of the work locally, inside your browser, and your files never leave your device. Nothing is sent anywhere.</p></div>
+      <div class="card"><h3>Lossless</h3><p>Many tools clean a photo by saving it again, which lowers quality and can rotate phone photos sideways. This one cuts out only the metadata, so the picture, video, and audio stay byte for byte the same.</p></div>
+      <div class="card"><h3>Whole folders, nothing to install</h3><p>Desktop tools like ExifTool also work locally and are excellent, but they need installing and often the command line. This works in any modern browser, on whole folders at once, and shows you what it found before you save.</p></div>
+      <div class="card"><h3>Proof you can check</h3><p>The page tells your browser to block every network connection, so even a bug could not upload a file. Load the page, turn off your internet, and it still works. The source code is public on <a href="https://github.com/validprivacy/validprivacy.github.io" target="_blank" rel="noopener">GitHub</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap cta">
+    <h2>Free, with nothing collected</h2>
+    <p>Metadata Removal is a free service from Valid Privacy. It has no account, no tracking, and no limit on how often you use it.</p>
+    <div class="btn-row"><a class="btn" href="#remove">Remove metadata</a><a class="btn quiet" href="metadata-removal-privacy.html">Privacy Policy</a></div>
+  </div>
+</section>
+
+<script src="metadata-removal-engine.js"></script>
+<script src="metadata-removal.js"></script>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><svg viewBox="0 0 342 403" aria-hidden="true"><use href="#vv-mark"/></svg>VALID <span class="brand-sub">PRIVACY</span></a>
+        <p class="foot-note">Anti-cloud data security.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul><li><a href="network.html">Valid Network</a></li><li><a href="vault.html">Valid Vault</a></li><li><a href="symphony.html">Valid Symphony</a></li><li><a href="https://chromewebstore.google.com/detail/valid-vault-password-mana/fkpfaemmphmakebhejhaegjgcnieeoab" target="_blank" rel="noopener">Chrome Web Store</a></li></ul>
+      </div>
+      <div>
+        <h4>Developers</h4>
+        <ul><li><a href="https://github.com/validprivacy" target="_blank" rel="noopener">GitHub</a></li><li><a href="vault-guide.html">Valid Vault User Guide</a></li><li><a href="https://github.com/validprivacy/valid-vault/blob/main/ROADMAP.md" target="_blank" rel="noopener">Valid Vault Roadmap</a></li></ul>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul><li><a href="metadata-removal.html">Metadata Removal</a></li><li><a href="metadata-removal-privacy.html">Metadata Removal Privacy Policy</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="company.html">About</a></li><li><a href="network.html">Valid Network</a></li><li><a href="network.html#foundation">The Valid Foundation</a></li><li><a href="company.html#security">Security</a></li><li><a href="company.html#contact">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-base"><span>&copy; 2026 Valid Privacy</span><span><a href="vault-privacy.html">Valid Vault Privacy Policy</a></span></div>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

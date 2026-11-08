@@ -30,4 +30,26 @@
   })
 
   window.addEventListener('storage', (e) => { if (e.key === THEME_KEY) applyTheme(readTheme()) })
+
+  const MENU_SELECTOR = 'details.menu'
+
+  function closeMenus(except) {
+    for (const menu of document.querySelectorAll(MENU_SELECTOR)) if (menu !== except) menu.open = false
+  }
+
+  document.addEventListener('toggle', (e) => {
+    if (e.target.matches && e.target.matches(MENU_SELECTOR) && e.target.open) closeMenus(e.target)
+  }, true)
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest(MENU_SELECTOR)) closeMenus(null)
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return
+    const open = document.querySelector(MENU_SELECTOR + '[open]')
+    if (!open) return
+    closeMenus(null)
+    open.querySelector('summary').focus()
+  })
 })()

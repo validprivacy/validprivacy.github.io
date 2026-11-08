@@ -21,6 +21,7 @@
   const LABEL_TAGS = 'Title, artist, and album tags'
   const LABEL_COVER = 'Embedded cover art'
   const LABEL_RECORDED = 'Recording date'
+  const LABEL_TRACK = 'GPS and sensor data track'
 
   const KIND_JPEG = 'JPEG image'
   const KIND_PNG = 'PNG image'
@@ -29,12 +30,16 @@
   const KIND_MP3 = 'MP3 audio'
   const KIND_WAV = 'WAV audio'
   const KIND_FLAC = 'FLAC audio'
+  const KIND_HEIC = 'HEIC photo'
 
   const HEIF_BRANDS = new Set(['heic', 'heix', 'hevc', 'hevx', 'heim', 'heis', 'hevm', 'hevs', 'mif1', 'msf1', 'avif', 'avis', 'mif2'])
+  const HEIC_BRANDS = new Set(['heic', 'heix', 'hevc', 'hevx', 'heim', 'heis', 'hevm', 'hevs'])
+  const XMP_PLACEHOLDER = '<x:xmpmeta xmlns:x="adobe:ns:meta/"/>'
   const MP4_TOP_KEEP = new Set(['ftyp', 'moov', 'mdat', 'free', 'skip', 'wide', 'pdin', 'moof', 'mfra', 'sidx', 'ssix', 'styp', 'emsg', 'prft'])
   const PNG_KEEP = new Set(['IHDR', 'PLTE', 'IDAT', 'IEND', 'tRNS', 'gAMA', 'cHRM', 'sRGB', 'iCCP', 'sBIT', 'bKGD', 'pHYs', 'acTL', 'fcTL', 'fdAT', 'cICP', 'mDCv', 'cLLi'])
   const MP4_VISUAL = new Set(['avc1', 'avc3', 'hvc1', 'hev1', 'mp4v', 'vp08', 'vp09', 'av01', 'apch', 'apcn', 'apcs', 'apco', 'ap4h', 'ap4x', 'jpeg', 'mjpa', 'mjpb', 's263', 'h263', 'dvh1', 'dvhe'])
   const MP4_CONTAINERS = new Set(['trak', 'mdia', 'minf', 'stbl'])
+  const DATA_TRACK_ENTRIES = new Set(['gpmd', 'camm', 'rtmd', 'mebx', 'mett', 'metx', 'djmd', 'dbgi'])
   const WAV_KEEP = new Set(['fmt ', 'data', 'fact', 'cue ', 'smpl', 'inst', 'plst'])
 
   class UnsupportedError extends Error {}
@@ -390,6 +395,51 @@
     }
   }
 
+  function inspectTrak(b, start, end, info) {
+    let p = start
+    while (p < end) {
+      const box = boxHeader(b, p, end)
+      if (!box || p + box.size > end) return
+      const body = p + box.header
+      if (box.type === 'mdia' || box.type === 'minf' || box.type === 'stbl') inspectTrak(b, body, p + box.size, info)
+      else if (box.type === 'hdlr') info.handler = ascii(b, body + 8, 4)
+      else if (box.type === 'stsd') { const entry = boxHeader(b, body + 8, p + box.size); if (entry) info.entry = entry.type }
+      else if (box.type === 'stco' || box.type === 'co64') {
+        const count = u32be(b, body + 4)
+        const wide = box.type === 'co64'
+        info.chunks = []
+        for (let i = 0; i < count; i++) {
+          const at = body + 8 + i * (wide ? 8 : 4)
+          info.chunks.push(wide ? u32be(b, at) * 4294967296 + u32be(b, at + 4) : u32be(b, at))
+        }
+      } else if (box.type === 'stsz') {
+        const size = u32be(b, body + 4)
+        const count = u32be(b, body + 8)
+        info.sizes = []
+        for (let i = 0; i < count; i++) info.sizes.push(size || u32be(b, body + 12 + i * 4))
+      } else if (box.type === 'stsc') {
+        const count = u32be(b, body + 4)
+        info.stsc = []
+        for (let i = 0; i < count; i++) info.stsc.push({ first: u32be(b, body + 8 + i * 12), perChunk: u32be(b, body + 12 + i * 12) })
+      }
+      p += box.size
+    }
+  }
+
+  function dataTrackSpans(info) {
+    if (!info.chunks || !info.sizes || !info.stsc || !info.stsc.length) return null
+    const spans = []
+    let sample = 0
+    for (let c = 0; c < info.chunks.length; c++) {
+      let perChunk = 0
+      for (const entry of info.stsc) if (entry.first <= c + 1) perChunk = entry.perChunk
+      let length = 0
+      for (let k = 0; k < perChunk && sample < info.sizes.length; k++) length += info.sizes[sample++]
+      if (length) spans.push({ at: info.chunks[c], length })
+    }
+    return spans
+  }
+
   function walkMp4(b, base, start, limit, depth, patches, found) {
     let p = start
     while (p < limit) {
@@ -401,6 +451,17 @@
         freeBox(patches, base, b, p, box)
       } else if (box.type === 'mvhd' || box.type === 'tkhd' || box.type === 'mdhd') {
         zeroTimes(patches, base, b, p, box, found)
+      } else if (box.type === 'trak' && depth === 0) {
+        const info = {}
+        inspectTrak(b, p + box.header, p + box.size, info)
+        if (info.handler === 'meta' || DATA_TRACK_ENTRIES.has(info.entry)) {
+          if (b.hasFragments) throw new UnsupportedError('Streaming-style video with a data track is not supported yet')
+          const spans = dataTrackSpans(info)
+          if (!spans) throw new Error('Damaged MP4')
+          found.add(LABEL_TRACK)
+          freeBox(patches, base, b, p, box)
+          for (const span of spans) patches.push({ at: span.at, zeros: span.length })
+        } else walkMp4(b, base, p + box.header, p + box.size, depth + 1, patches, found)
       } else if (MP4_CONTAINERS.has(box.type) && depth < 6) {
         walkMp4(b, base, p + box.header, p + box.size, depth + 1, patches, found)
       } else if (box.type === 'stsd') {
@@ -434,6 +495,7 @@
       if (realBox.type === 'moov') {
         if (realBox.size > MAX_MOOV_BYTES) throw new UnsupportedError('Video index is too large')
         const moov = await readRange(file, p, p + realBox.size)
+        moov.hasFragments = includesAscii(moov, 'mvex')
         walkMp4(moov, p, realBox.header, realBox.size, 0, patches, found)
         sawMoov = true
       } else if (!MP4_TOP_KEEP.has(realBox.type)) {
@@ -621,13 +683,30 @@
     return { found, location: null, output: new Blob(parts, { type: 'audio/flac' }) }
   }
 
+  async function ftypBrands(file) {
+    const h = await readRange(file, 0, 8)
+    const size = Math.min(u32be(h, 0), 256)
+    const box = await readRange(file, 0, size)
+    const brands = new Set([ascii(box, 8, 4)])
+    for (let p = 16; p + 4 <= box.length; p += 4) brands.add(ascii(box, p, 4))
+    return brands
+  }
+
   async function detect(file) {
     const h = await readRange(file, 0, 16)
     if (h[0] === 0xff && h[1] === 0xd8 && h[2] === 0xff) return KIND_JPEG
     if (h[0] === 0x89 && ascii(h, 1, 3) === 'PNG') return KIND_PNG
     if (ascii(h, 0, 4) === 'RIFF' && ascii(h, 8, 4) === 'WEBP') return KIND_WEBP
     if (ascii(h, 0, 4) === 'RIFF' && ascii(h, 8, 4) === 'WAVE') return KIND_WAV
-    if (ascii(h, 4, 4) === 'ftyp') return KIND_MP4
+    if (ascii(h, 4, 4) === 'ftyp') {
+      const brands = await ftypBrands(file)
+      const major = ascii(h, 8, 4)
+      if (HEIF_BRANDS.has(major) || (!['isom', 'iso2', 'mp41', 'mp42', 'qt  ', 'M4A ', 'M4V ', 'M4B ', 'avc1', '3gp4', '3gp5', 'dash'].includes(major) && [...brands].some((b) => HEIF_BRANDS.has(b)))) {
+        if ([...brands].some((b) => HEIC_BRANDS.has(b))) return KIND_HEIC
+        throw new UnsupportedError('AVIF and other HEIF images are not supported yet')
+      }
+      return KIND_MP4
+    }
     if (ascii(h, 0, 4) === 'fLaC') return KIND_FLAC
     if (ascii(h, 0, 3) === 'ID3') {
       const length = 10 + syncsafe(h, 6) + ((h[5] & 0x10) ? 10 : 0)
@@ -639,7 +718,166 @@
     return null
   }
 
-  const CLEANERS = new Map([[KIND_JPEG, cleanJpeg], [KIND_PNG, cleanPng], [KIND_WEBP, cleanWebp], [KIND_MP4, cleanMp4], [KIND_MP3, cleanMp3], [KIND_WAV, cleanWav], [KIND_FLAC, cleanFlac]])
+  function parseIinf(b, start, end) {
+    const items = new Map()
+    const version = b[start]
+    let p = start + 4
+    const count = version === 0 ? (b[p] << 8) | b[p + 1] : u32be(b, p)
+    p += version === 0 ? 2 : 4
+    for (let i = 0; i < count && p + 8 <= end; i++) {
+      const box = boxHeader(b, p, end)
+      if (!box) break
+      if (box.type === 'infe') {
+        const q = p + box.header
+        const v = b[q]
+        if (v >= 2) {
+          let r = q + 4
+          const id = v === 2 ? (b[r] << 8) | b[r + 1] : u32be(b, r)
+          r += v === 2 ? 2 : 4
+          r += 2
+          const type = ascii(b, r, 4)
+          r += 4
+          while (r < p + box.size && b[r] !== 0) r++
+          r++
+          let contentType = ''
+          if (type === 'mime') {
+            const s = r
+            while (r < p + box.size && b[r] !== 0) r++
+            contentType = ascii(b, s, r - s)
+          }
+          items.set(id, { type, contentType })
+        }
+      }
+      p += box.size
+    }
+    return items
+  }
+
+  function readSized(b, p, size) {
+    let v = 0
+    for (let i = 0; i < size; i++) v = v * 256 + b[p + i]
+    return v
+  }
+
+  function parseIloc(b, start) {
+    const locations = new Map()
+    const version = b[start]
+    let p = start + 4
+    const offsetSize = b[p] >> 4
+    const lengthSize = b[p] & 15
+    const baseSize = b[p + 1] >> 4
+    const indexSize = version === 1 || version === 2 ? b[p + 1] & 15 : 0
+    p += 2
+    const count = version < 2 ? (b[p] << 8) | b[p + 1] : u32be(b, p)
+    p += version < 2 ? 2 : 4
+    for (let i = 0; i < count; i++) {
+      const id = version < 2 ? (b[p] << 8) | b[p + 1] : u32be(b, p)
+      p += version < 2 ? 2 : 4
+      let method = 0
+      if (version === 1 || version === 2) { method = b[p + 1] & 15; p += 2 }
+      p += 2
+      const base = readSized(b, p, baseSize)
+      p += baseSize
+      const extentCount = (b[p] << 8) | b[p + 1]
+      p += 2
+      const extents = []
+      for (let e = 0; e < extentCount; e++) {
+        p += indexSize
+        const offset = readSized(b, p, offsetSize)
+        p += offsetSize
+        const length = readSized(b, p, lengthSize)
+        p += lengthSize
+        extents.push({ offset: base + offset, length })
+      }
+      locations.set(id, { method, extents })
+    }
+    return locations
+  }
+
+  async function cleanHeic(file) {
+    const found = new Set()
+    const state = { orientation: 1, location: null }
+    let p = 0
+    let meta = null
+    while (p < file.size) {
+      const head = await readRange(file, p, Math.min(file.size, p + 16))
+      if (head.length < 8) throw new Error('Damaged HEIC')
+      let size = u32be(head, 0)
+      let header = 8
+      if (size === 1) { size = u32be(head, 8) * 4294967296 + u32be(head, 12); header = 16 }
+      else if (size === 0) size = file.size - p
+      if (size < header || p + size > file.size) throw new Error('Damaged HEIC')
+      if (ascii(head, 4, 4) === 'meta') {
+        if (size > MAX_MOOV_BYTES) throw new UnsupportedError('Image index is too large')
+        meta = { at: p, header, size, bytes: await readRange(file, p, p + size) }
+      }
+      p += size
+    }
+    if (!meta) throw new Error('Damaged HEIC')
+    const b = meta.bytes
+    let items = null
+    let locations = null
+    let idatStart = -1
+    let q = meta.header + 4
+    while (q < meta.size) {
+      const box = boxHeader(b, q, meta.size)
+      if (!box || q + box.size > meta.size) throw new Error('Damaged HEIC')
+      if (box.type === 'iinf') items = parseIinf(b, q + box.header, q + box.size)
+      else if (box.type === 'iloc') locations = parseIloc(b, q + box.header)
+      else if (box.type === 'idat') idatStart = meta.at + q + box.header
+      q += box.size
+    }
+    if (!items || !locations) throw new Error('Damaged HEIC')
+    const patches = []
+    for (const [id, item] of items) {
+      const isExif = item.type === 'Exif'
+      const isXmp = item.type === 'mime' && /rdf\+xml|xmp/i.test(item.contentType)
+      if (!isExif && !isXmp) continue
+      const location = locations.get(id)
+      if (!location) continue
+      const spans = []
+      let total = 0
+      for (const extent of location.extents) {
+        let at = extent.offset
+        if (location.method === 1) {
+          if (idatStart < 0) throw new Error('Damaged HEIC')
+          at += idatStart
+        } else if (location.method !== 0) throw new UnsupportedError('This HEIC layout is not supported yet')
+        const length = extent.length || file.size - at
+        if (at + length > file.size) throw new Error('Damaged HEIC')
+        spans.push({ at, length })
+        total += length
+      }
+      const data = new Uint8Array(total)
+      let w = 0
+      for (const span of spans) { data.set(await readRange(file, span.at, span.at + span.length), w); w += span.length }
+      const replacement = new Uint8Array(total)
+      if (isExif) {
+        const offset = total >= 4 ? u32be(data, 0) : 0
+        if (4 + offset < total) readTiff(data.subarray(4 + offset), found, state)
+        if (!found.size) found.add(LABEL_DEVICE)
+        if (total >= 18) replacement.set([0, 0, 0, 0, 0x49, 0x49, 0x2a, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00])
+      } else {
+        noteXmp(data, found)
+        replacement.fill(0x20)
+        if (total >= XMP_PLACEHOLDER.length) replacement.set(asciiBytes(XMP_PLACEHOLDER))
+      }
+      let r = 0
+      for (const span of spans) { patches.push({ at: span.at, bytes: replacement.subarray(r, r + span.length) }); r += span.length }
+    }
+    patches.sort((x, y) => x.at - y.at)
+    const parts = []
+    let cursor = 0
+    for (const patch of patches) {
+      if (patch.at < cursor) throw new Error('Damaged HEIC')
+      parts.push(file.slice(cursor, patch.at), patch.bytes)
+      cursor = patch.at + patch.bytes.length
+    }
+    parts.push(file.slice(cursor))
+    return { found, location: state.location, output: new Blob(parts, { type: 'image/heic' }) }
+  }
+
+  const CLEANERS = new Map([[KIND_HEIC, cleanHeic], [KIND_JPEG, cleanJpeg], [KIND_PNG, cleanPng], [KIND_WEBP, cleanWebp], [KIND_MP4, cleanMp4], [KIND_MP3, cleanMp3], [KIND_WAV, cleanWav], [KIND_FLAC, cleanFlac]])
 
   async function clean(file) {
     let kind = null

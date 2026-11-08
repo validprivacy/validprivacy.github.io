@@ -40,10 +40,10 @@
           <button class="btn" type="button" id="mr-pick-files">Choose files</button>
           <button class="btn quiet" type="button" id="mr-pick-folder">Choose a folder</button>
         </div>
-        <input type="file" id="mr-files" multiple hidden accept=".jpg,.jpeg,.png,.webp,.mp4,.mov,.m4v,.m4a,.mp3,.wav,.flac,image/jpeg,image/png,image/webp,video/mp4,video/quicktime,audio/*">
+        <input type="file" id="mr-files" multiple hidden accept=".jpg,.jpeg,.heic,.heif,.png,.webp,.mp4,.mov,.m4v,.m4a,.mp3,.wav,.flac,image/jpeg,image/heic,image/heif,image/png,image/webp,video/mp4,video/quicktime,audio/*">
         <input type="file" id="mr-folder" webkitdirectory multiple hidden>
         <label class="mr-check"><input type="checkbox" id="mr-rename"> Rename the clean copies to numbers. File names like IMG_20260102_030405 can show when something was taken.</label>
-        <p class="mr-fine">JPEG, PNG, WebP, MP4, MOV, M4A, MP3, WAV, and FLAC. Your originals are never changed.</p>
+        <p class="mr-fine">JPEG, HEIC, PNG, WebP, MP4, MOV, M4A, MP3, WAV, and FLAC. Your originals are never changed.</p>
       </div>
       <p class="mr-status" id="mr-status" aria-live="polite" hidden></p>
       <div class="mr-summary" id="mr-summary" hidden></div>
@@ -92,16 +92,18 @@
         <thead><tr><th>File type</th><th>Removed</th><th>Kept exactly as it was</th></tr></thead>
         <tbody>
           <tr><td>JPEG photos</td><td>EXIF (GPS, device, dates, serial numbers, owner), XMP editing history, IPTC captions and creator, comments, maker data, hidden preview images, and data hidden after the image</td><td>Every compressed byte of the picture, its color profile, and the rotation, so phone photos stay upright</td></tr>
+          <tr><td>HEIC photos (iPhone)</td><td>EXIF (GPS, device, dates, owner) and XMP</td><td>The photo, its rotation, depth data, and the file size, byte for byte</td></tr>
           <tr><td>PNG images</td><td>Text fields (author, software, descriptions), EXIF, XMP, and timestamps</td><td>Every pixel and the color information</td></tr>
           <tr><td>WebP images</td><td>EXIF and XMP</td><td>The picture, animation, and color profile</td></tr>
-          <tr><td>MP4, MOV, and M4A</td><td>Location, device make and model, software, titles and tags, comments, XMP, recording dates, and the encoder name</td><td>Every byte of the audio and video streams</td></tr>
+          <tr><td>MP4, MOV, and M4A</td><td>Location, device make and model, software, titles and tags, comments, XMP, recording dates, the encoder name, and the separate GPS and sensor tracks that action cameras and drones record, such as GoPro and DJI</td><td>Every byte of the audio and video streams</td></tr>
           <tr><td>MP3</td><td>ID3 and APE tags, including titles, artists, comments, dates, and cover art</td><td>Every audio frame</td></tr>
           <tr><td>WAV</td><td>INFO tags, broadcast details (originator and recording date), ID3 tags, and XMP</td><td>The audio data and format</td></tr>
           <tr><td>FLAC</td><td>Vorbis comments and embedded pictures</td><td>The audio frames and seek points</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="mr-note"><strong>It cannot remove what is in the picture or recording itself:</strong> faces, street signs, reflections, landmarks, voices, or background sounds. Encoder settings written inside a video stream stay, because removing them would mean re-encoding the video. When you save a file, your computer gives the copy a new date of its own. HEIC and AVIF photos, GIF, TIFF, RAW, and other formats are left out and listed as not supported, so nothing is ever passed through unclean.</p>
+    <p class="mr-note"><strong>It cannot remove what is in the picture or recording itself:</strong> faces, street signs, reflections, landmarks, voices, or background sounds. Encoder settings written inside a video stream stay, because removing them would mean re-encoding the video. When you save a file, your computer gives the copy a new date of its own. Some drones save GPS in a separate .SRT file next to the video, so leave that file out when you share.</p>
+    <p class="mr-note"><strong>Coming soon:</strong> AVIF images, GIF, TIFF, RAW camera files, PDFs, and Word, Excel, and PowerPoint documents. Until then, those files are left out and listed as not supported, so nothing is ever passed through unclean.</p>
   </div>
 </section>
 
@@ -111,6 +113,7 @@
     <div class="grid two">
       <div class="card"><h3>Fully local</h3><p>Most "remove metadata online" sites upload your file to their server to clean it, which hands them the exact data you are trying to protect. This page does all of the work locally, inside your browser, and your files never leave your device. Nothing is sent anywhere.</p></div>
       <div class="card"><h3>Lossless</h3><p>Many tools clean a photo by saving it again, which lowers quality and can rotate phone photos sideways. This one cuts out only the metadata, so the picture, video, and audio stay byte for byte the same.</p></div>
+      <div class="card"><h3>Action camera GPS removed</h3><p>GoPro, DJI, and other action cameras and drones record GPS as its own track inside the video. Many tools only edit tags, so that track survives, and the usual workaround is rebuilding the video with a separate program. This one removes the track and blanks its data in place, leaving the video and audio untouched.</p></div>
       <div class="card"><h3>Whole folders, nothing to install</h3><p>Desktop tools like ExifTool also work locally and are excellent, but they need installing and often the command line. This works in any modern browser, on whole folders at once, and shows you what it found before you save.</p></div>
       <div class="card"><h3>Proof you can check</h3><p>The page tells your browser to block every network connection, so even a bug could not upload a file. Load the page, turn off your internet, and it still works. The source code is public on <a href="https://github.com/validprivacy/validprivacy.github.io" target="_blank" rel="noopener">GitHub</a>.</p></div>
     </div>

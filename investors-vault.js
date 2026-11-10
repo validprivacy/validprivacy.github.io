@@ -11,9 +11,9 @@
     { key: 'l', label: 'Large and regulated', work: 3 },
   ]
   const FIELDS = [
-    { id: 'ask', group: 'g-deal', label: 'Funding amount', hint: 'Or drag the funding slider at the top', min: 2000, max: 5000000, step: 1000, value: 1000000, unit: '$' },
+    { id: 'ask', group: 'g-deal', label: 'Funding amount', hint: 'Or drag the funding slider at the top', min: 2000, max: 5000000, step: 1000, value: 250000, unit: '$' },
     { id: 'cap', group: 'g-deal', label: 'Post-money valuation cap', hint: 'Set with the investor', min: 500000, max: 50000000, step: 250000, value: 8000000, unit: '$' },
-    { id: 'price', group: 'g-market', label: 'Price per user per month', hint: 'Billed yearly', min: 1, max: 20, step: 0.5, value: 6, unit: '$' },
+    { id: 'price', group: 'g-market', label: 'Price per user per month', hint: 'Billed yearly. Priced as an engineered offline product', min: 1, max: 30, step: 0.5, value: 10, unit: '$' },
     { id: 'setup', group: 'g-market', label: 'Setup fee per new customer', hint: 'One-time: intake, config, first deployment', min: 0, max: 25000, step: 1, value: 999, unit: '$' },
     { id: 'churn', group: 'g-market', label: 'Customers who cancel each year', hint: '', min: 0, max: 40, step: 1, value: 10, unit: '%' },
     { id: 'sSeats', group: 'g-small', label: 'Users per customer', hint: 'Law offices, clinics, small firms', min: 1, max: 100, step: 1, value: 25, unit: '' },
@@ -23,18 +23,17 @@
     { id: 'mNew', group: 'g-mid', label: 'New customers in year 1', hint: '', min: 0, max: 500, step: 1, value: 3, unit: '' },
     { id: 'mGrow', group: 'g-mid', label: 'Growth in new customers each year', hint: '', min: 0, max: 300, step: 5, value: 60, unit: '%' },
     { id: 'lSeats', group: 'g-large', label: 'Users per customer', hint: 'Defense contractors, utilities, government', min: 500, max: 20000, step: 100, value: 1000, unit: '' },
-    { id: 'lNew', group: 'g-large', label: 'New customers in year 1', hint: '', min: 0, max: 200, step: 1, value: 1, unit: '' },
+    { id: 'lNew', group: 'g-large', label: 'New customers in year 1', hint: '', min: 0, max: 200, step: 1, value: 2, unit: '' },
     { id: 'lGrow', group: 'g-large', label: 'Growth in new customers each year', hint: '', min: 0, max: 300, step: 5, value: 80, unit: '%' },
     { id: 'founder', group: 'g-team', label: 'Founder salary', hint: 'Software developer median is $135,980 (BLS)', min: 0, max: 300000, step: 1000, value: 135000, unit: '$' },
     { id: 'founderCloses', group: 'g-team', label: 'Sales work the founder covers per year', hint: 'In mid-size deals. A large deal counts as 3, a small one as a quarter', min: 0, max: 50, step: 1, value: 6, unit: '' },
     { id: 'repSalary', group: 'g-team', label: 'Salesperson cost per year', hint: 'Base plus commission', min: 0, max: 300000, step: 1000, value: 100000, unit: '$' },
     { id: 'repCloses', group: 'g-team', label: 'Sales work per salesperson per year', hint: 'In mid-size deals', min: 1, max: 200, step: 1, value: 24, unit: '' },
     { id: 'engSalary', group: 'g-team', label: 'Engineer salary', hint: '', min: 0, max: 300000, step: 1000, value: 120000, unit: '$' },
-    { id: 'eng1', group: 'g-team', label: 'Engineers in year 1', hint: '', min: 0, max: 50, step: 1, value: 1, unit: '' },
-    { id: 'engAdd', group: 'g-team', label: 'Engineers added each year', hint: '', min: 0, max: 50, step: 1, value: 1, unit: '' },
-    { id: 'supSalary', group: 'g-team', label: 'Support staff salary', hint: '', min: 0, max: 200000, step: 1000, value: 60000, unit: '$' },
+      { id: 'engYear', group: 'g-team', label: 'Year the engineer is hired', hint: 'The founder does the engineering until then. Set to 6 to hire no one in five years', min: 1, max: 6, step: 1, value: 3, unit: '' },
+    { id: 'supSalary', group: 'g-team', label: 'Support cost per person per year', hint: 'Overseas support contractors', min: 0, max: 200000, step: 1000, value: 20000, unit: '$' },
     { id: 'perSupport', group: 'g-team', label: 'Customers per support person', hint: 'In mid-size customers. A large one counts as 3, a small one as a quarter', min: 1, max: 500, step: 1, value: 40, unit: '' },
-    { id: 'burden', group: 'g-team', label: 'Employer costs on top of salaries', hint: 'Payroll taxes, benefits', min: 0, max: 50, step: 1, value: 20, unit: '%' },
+    { id: 'burden', group: 'g-team', label: 'Employer costs on top of US salaries', hint: 'Payroll taxes and benefits for the founder, salespeople, and engineer', min: 0, max: 50, step: 1, value: 20, unit: '%' },
     { id: 'running', group: 'g-other', label: 'Running costs per year', hint: 'Accounting, insurance, legal, office', min: 0, max: 500000, step: 500, value: 25000, unit: '$' },
     { id: 'otherPct', group: 'g-other', label: 'Marketing and sales costs', hint: 'Share of revenue: travel, events, ads', min: 0, max: 50, step: 1, value: 15, unit: '%' },
     { id: 'audit', group: 'g-other', label: 'Independent security audit', hint: 'One-time, year 1', min: 0, max: 300000, step: 1000, value: 50000, unit: '$' },
@@ -143,10 +142,10 @@
       }
       license = seats * s.price
       const reps = Math.ceil(Math.max(0, work - s.founderCloses) / s.repCloses - 1e-9)
-      const engineers = s.eng1 + s.engAdd * y
+      const engineers = y + 1 >= s.engYear ? 1 : 0
       const support = Math.max(1, Math.ceil(load / s.perSupport - 1e-9))
       const team = 1 + reps + engineers + support
-      const payroll = (s.founder + reps * s.repSalary + engineers * s.engSalary + support * s.supSalary) / 12 * lift
+      const payroll = ((s.founder + reps * s.repSalary + engineers * s.engSalary) * lift + support * s.supSalary) / 12
       const revenue = license + fresh * s.setup
       const cost = payroll + s.running / 12 + revenue * s.otherPct / 100 + (m === 1 ? s.audit : 0)
       cash += revenue - cost

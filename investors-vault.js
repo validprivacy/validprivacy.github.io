@@ -11,9 +11,9 @@
     { key: 'l', label: 'Large and regulated', work: 3 },
   ]
   const FIELDS = [
-    { id: 'ask', group: 'g-deal', label: 'Funding amount', hint: 'Or drag the funding slider at the top', min: 2000, max: 5000000, step: 1000, value: 250000, unit: '$' },
+    { id: 'ask', group: 'g-deal', label: 'Funding amount', hint: 'Or drag the funding slider at the top', min: 2000, max: 5000000, step: 1000, value: 300000, unit: '$' },
     { id: 'cap', group: 'g-deal', label: 'Post-money valuation cap', hint: 'Set with the investor', min: 500000, max: 50000000, step: 250000, value: 8000000, unit: '$' },
-    { id: 'price', group: 'g-market', label: 'Price per user per month', hint: 'Billed yearly. Priced as an engineered offline product', min: 1, max: 30, step: 0.5, value: 10, unit: '$' },
+    { id: 'price', group: 'g-market', label: 'Price per user per month', hint: 'Billed yearly. Priced as an engineered offline product', min: 1, max: 30, step: 0.5, value: 7, unit: '$' },
     { id: 'setup', group: 'g-market', label: 'Setup fee per new customer', hint: 'One-time: intake, config, first deployment', min: 0, max: 25000, step: 1, value: 999, unit: '$' },
     { id: 'churn', group: 'g-market', label: 'Customers who cancel each year', hint: '', min: 0, max: 40, step: 1, value: 10, unit: '%' },
     { id: 'sSeats', group: 'g-small', label: 'Users per customer', hint: 'Law offices, clinics, small firms', min: 1, max: 100, step: 1, value: 25, unit: '' },

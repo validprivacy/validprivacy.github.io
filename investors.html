@@ -50,54 +50,54 @@
     <div class="section-head"><div class="kicker">Investor deck</div><h2>Valid Vault Enterprise</h2></div>
     <div class="deck">
       <article class="slide" aria-labelledby="slide-1">
-        <div class="slide-top"><span class="slide-kicker">Valid Privacy</span><span class="slide-num">01 / 11</span></div>
-        <h3 class="slide-title" id="slide-1">Anti-cloud data security.</h3>
-        <div class="slide-body"><p class="slide-lead">Valid Vault Enterprise: password management for organizations that keep their credentials off the cloud.</p></div>
+        <div class="slide-top"><span class="slide-kicker">Valid Vault Enterprise</span><span class="slide-num">01 / 11</span></div>
+        <h3 class="slide-title" id="slide-1">Company logins for every employee, without handing out the passwords</h3>
+        <div class="slide-body"><p class="slide-lead">The passwords stay encrypted on the company's own equipment, with no vendor server and no server to run.</p></div>
       </article>
       <article class="slide" aria-labelledby="slide-2">
         <div class="slide-top"><span class="slide-kicker">The problem</span><span class="slide-num">02 / 11</span></div>
-        <h3 class="slide-title" id="slide-2">Business password managers keep every customer's vault in the vendor's cloud</h3>
-        <div class="slide-body"><p>Credentials are the keys to everything an organization holds. When a vendor stores every customer's vault on the same servers, one breach at that vendor reaches all of them. In 2022, attackers copied encrypted customer vault backups from LastPass.</p><p>Hospitals, banks, defense contractors, and government offices work under rules and contracts that limit where sensitive data may go. A cloud vault is a hard sell to them.</p></div>
+        <h3 class="slide-title" id="slide-2">Shared passwords end up in spreadsheets, texts, and someone else's server</h3>
+        <div class="slide-body"><ul><li>Small businesses pass logins around by text, email, and spreadsheet.</li><li>Business password managers keep every customer's vault on the vendor's servers. In 2022, attackers stole encrypted copies of LastPass customer vaults.</li><li>Keeping it in-house today means running and securing your own password server.</li></ul></div>
       </article>
       <article class="slide" aria-labelledby="slide-3">
-        <div class="slide-top"><span class="slide-kicker">The product</span><span class="slide-num">03 / 11</span></div>
-        <h3 class="slide-title" id="slide-3">Valid Vault keeps credentials on the organization's own devices</h3>
-        <div class="slide-body"><ul><li>Logins, two-factor codes, personal details, and seed phrases are encrypted on the device, under a key only the user can unlock.</li><li>Devices sync directly by animated QR code or encrypted file, with no server and no account.</li><li>Unlock with a fingerprint, device PIN, or master password.</li><li>Autofill places only the chosen value in the field, and nothing is copied to the clipboard.</li><li>Imports from Bitwarden, 1Password, Dashlane, Samsung Pass, and CSV files, read entirely on the device.</li></ul></div>
+        <div class="slide-top"><span class="slide-kicker">What it does</span><span class="slide-num">03 / 11</span></div>
+        <h3 class="slide-title" id="slide-3">The admin decides who gets which logins. Employees unlock and fill.</h3>
+        <div class="slide-body"><ul><li>The admin adds each employee's device and chooses which shared vaults it can open.</li><li>Employees unlock with a fingerprint or password and fill logins in the browser.</li><li>Removing a device locks the shared vault with a new key that device never receives.</li><li>Companies can choose network-only access, so company passwords work only on the office network.</li></ul></div>
       </article>
       <article class="slide" aria-labelledby="slide-4">
-        <div class="slide-top"><span class="slide-kicker">Live today</span><span class="slide-num">04 / 11</span></div>
-        <h3 class="slide-title" id="slide-4">Shipping, with public source code</h3>
-        <div class="slide-body"><ul><li>On the Chrome Web Store, one listing for Chrome, Brave, and Edge.</li><li>Android app built from the same code, with the Google Play release in testing.</li><li>Source code public on GitHub.</li><li>User guide, privacy policy, and security contact published.</li></ul></div>
+        <div class="slide-top"><span class="slide-kicker">How it is built</span><span class="slide-num">04 / 11</span></div>
+        <h3 class="slide-title" id="slide-4">Nothing central to attack</h3>
+        <div class="slide-body"><ul><li>No server, no database, and no login page.</li><li>The browser extension is blocked from making any network connection.</li><li>Shared vaults are encrypted files on the company's own drive. The keys inside are locked to each device, so there is nothing in them a password guess can open.</li><li>It uses the file sharing and device management the company already runs.</li></ul></div>
       </article>
       <article class="slide" aria-labelledby="slide-5">
-        <div class="slide-top"><span class="slide-kicker">In development</span><span class="slide-num">05 / 11</span></div>
-        <h3 class="slide-title" id="slide-5">Valid Vault Enterprise</h3>
-        <div class="slide-body"><ul><li>Admin policies, signed and deployed through Chrome and Android managed settings.</li><li>Shared vaults on the organization's own network storage, never on Valid Privacy servers.</li><li>Each person gets their own key to a shared vault, and removing someone re-keys it.</li><li>Recovery split across several trusted people, so no single person holds it.</li></ul></div>
+        <div class="slide-top"><span class="slide-kicker">Key protection</span><span class="slide-num">05 / 11</span></div>
+        <h3 class="slide-title" id="slide-5">Built to outlast guessing</h3>
+        <div class="slide-body"><ul><li>Every vault is encrypted with AES-256-GCM.</li><li>Master passwords need 12 characters and go through 600,000 rounds of key derivation for every guess.</li><li>Fingerprint and Android unlock are bound to the device's security hardware, so stolen data has nothing to guess.</li><li>The encrypted key backup checks a passphrase and three security answers as one secret. A wrong guess never says which part was wrong.</li></ul></div>
       </article>
       <article class="slide" aria-labelledby="slide-6">
-        <div class="slide-top"><span class="slide-kicker">Who buys</span><span class="slide-num">06 / 11</span></div>
-        <h3 class="slide-title" id="slide-6">Organizations that cannot put credentials in someone else's cloud</h3>
-        <div class="slide-body"><ul class="slide-cols"><li>Hospitals and clinics</li><li>Law and accounting firms</li><li>Banks and credit unions</li><li>Defense contractors and suppliers</li><li>Utilities and critical infrastructure</li><li>Government offices and air-gapped networks</li></ul></div>
+        <div class="slide-top"><span class="slide-kicker">Live today</span><span class="slide-num">06 / 11</span></div>
+        <h3 class="slide-title" id="slide-6">Shipping, with public source code</h3>
+        <div class="slide-body"><ul><li>On the Chrome Web Store, one listing for Chrome, Brave, and Edge.</li><li>Android app built from the same code, with the Google Play release in testing.</li><li>More than 190 automated tests run on every change.</li><li>User guide, privacy policy, and security contact published.</li></ul></div>
       </article>
       <article class="slide" aria-labelledby="slide-7">
-        <div class="slide-top"><span class="slide-kicker">Business model</span><span class="slide-num">07 / 11</span></div>
-        <h3 class="slide-title" id="slide-7">Per-user licensing with a setup fee</h3>
-        <div class="slide-body"><ul><li>Starting at $7 per user per month, billed yearly.</li><li>A one-time setup fee per organization covers intake, configuration, and first deployment.</li><li>Founder-led sales at first, with salespeople added as deal volume grows.</li><li>Support from overseas contractors, scaled to the number of customers.</li></ul></div>
+        <div class="slide-top"><span class="slide-kicker">In development</span><span class="slide-num">07 / 11</span></div>
+        <h3 class="slide-title" id="slide-7">Shared company vaults</h3>
+        <div class="slide-body"><ul><li>Admin settings signed by the company's own key and pushed through Chrome and Android device management.</li><li>Device enrollment by short code, and removal by re-keying the shared vault.</li><li>Recovery and other sensitive actions approved by several executives, not one person.</li><li>Options for network-only access and wiping a device after repeated wrong unlocks.</li></ul></div>
       </article>
       <article class="slide" aria-labelledby="slide-8">
-        <div class="slide-top"><span class="slide-kicker">Use of funds</span><span class="slide-num">08 / 11</span></div>
-        <h3 class="slide-title" id="slide-8">What investment pays for</h3>
-        <div class="slide-body"><ul><li>An independent security audit before selling to regulated customers.</li><li>Building the enterprise features.</li><li>The first pilot deployments.</li><li>The first engineering hire.</li><li>Customer support as customers sign.</li></ul></div>
+        <div class="slide-top"><span class="slide-kicker">Who it is for</span><span class="slide-num">08 / 11</span></div>
+        <h3 class="slide-title" id="slide-8">Businesses that answer for where their data sits</h3>
+        <div class="slide-body"><ul class="slide-cols"><li>Clinics and medical offices</li><li>Law and accounting firms</li><li>Banks and credit unions</li><li>Defense suppliers</li><li>Utilities</li><li>Government offices</li></ul></div>
       </article>
       <article class="slide" aria-labelledby="slide-9">
-        <div class="slide-top"><span class="slide-kicker">Beyond Vault</span><span class="slide-num">09 / 11</span></div>
-        <h3 class="slide-title" id="slide-9">One company, several products</h3>
-        <div class="slide-body"><ul><li><strong>Valid Network.</strong> The flagship: a Layer 1 blockchain written from scratch in Rust, now in testnet.</li><li><strong>Valid Vault.</strong> Out now on the Chrome Web Store.</li><li><strong>Valid Symphony.</strong> Experimental touchless home control by radar, with no camera, account, or cloud.</li><li><strong>Metadata Removal.</strong> A free service that strips location and device data from files locally.</li></ul></div>
+        <div class="slide-top"><span class="slide-kicker">Business model</span><span class="slide-num">09 / 11</span></div>
+        <h3 class="slide-title" id="slide-9">Per-user licenses with a setup fee</h3>
+        <div class="slide-body"><ul><li>Starting at $7 per user per month, billed yearly.</li><li>A one-time setup fee per business covers configuration and first deployment.</li><li>The personal version of Valid Vault stays free.</li></ul></div>
       </article>
       <article class="slide" aria-labelledby="slide-10">
         <div class="slide-top"><span class="slide-kicker">Team</span><span class="slide-num">10 / 11</span></div>
-        <h3 class="slide-title" id="slide-10">Founder and technical lead</h3>
-        <div class="slide-body"><p>Valid Privacy was founded by Michael Carter, a software engineer working in Rust and JavaScript, with a background as a Radioman and in IT and network support for hospital and campus environments, including cryptographic key handling, transmission security, and protecting sensitive records on shared infrastructure.</p><p>He designed and built every Valid Privacy product.</p></div>
+        <h3 class="slide-title" id="slide-10">Founder</h3>
+        <div class="slide-body"><p>Valid Privacy was founded by Michael Carter, a software engineer working in Rust and JavaScript.</p><p>He designed and built Valid Vault, Valid Network, and Valid Symphony.</p></div>
       </article>
       <article class="slide" aria-labelledby="slide-11">
         <div class="slide-top"><span class="slide-kicker">Contact</span><span class="slide-num">11 / 11</span></div>

@@ -418,3 +418,7 @@ mark.hit-active { background: var(--text); color: var(--bg); }
 .slide-lead { font-size: clamp(18px, 2vw, 22px); color: var(--text); }
 .slide-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
 @media (max-width: 640px) { .slide-cols { grid-template-columns: minmax(0, 1fr); } .slide { min-height: 0; } }
+.doc-card { text-decoration: none; color: inherit; transition: border-color 0.15s; }
+.doc-card:hover { border-color: var(--border-strong); }
+.doc-card .doc-meta { margin-top: auto; padding-top: 14px; font-size: 13px; color: var(--text-dim); }
+.doc-actions { margin-top: 28px; }

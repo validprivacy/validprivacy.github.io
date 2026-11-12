@@ -84,7 +84,7 @@
       <li>A random 256-bit master key encrypts the vault with AES-256-GCM, and it is wrapped separately under each unlock method.</li>
       <li>Unwrapping the key is the check itself. No password hash is stored anywhere to attack.</li>
       <li>Passwords are stretched with PBKDF2-SHA256 at 600,000 rounds, and new master passwords are checked against common passwords.</li>
-      <li>A key leaving a device is wrapped under a passphrase, plus three additional answers, at 1,000,000 rounds.</li>
+      <li>A key leaving a device is wrapped under a passphrase plus three Compound Questions, joined into one secret, at 1,000,000 rounds.</li>
       <li>Web pages never receive the master key or a 2FA setup key, only the single value you chose to fill.</li>
       <li>Logins, wallets, and bookmarks are each sealed as one encrypted blob, so storage reveals no site names or usernames.</li>
       <li>Logins fill only on the site address they were saved for, so a look-alike phishing site gets nothing, with no block list needed.</li>

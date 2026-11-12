@@ -135,7 +135,7 @@
       <li><strong>Changing your unlock methods or clearing the vault</strong> asks for your fingerprint, PIN, or password again.</li>
       <li><strong>Exporting, importing, or sharing your key or vault</strong>, by file or QR, asks for your fingerprint, PIN, or password first. A brand-new browser with no vault yet skips this, so first setup still works.</li>
       <li><strong>Passwords are never shown in the popup and never copied to the clipboard.</strong> Autofill places a password straight into the field you clicked.</li>
-      <li><strong>Anything that leaves the device stays locked.</strong> A shared or exported vault is encrypted under your master key, and your key only travels under your passphrase and three answers.</li>
+      <li><strong>Anything that leaves the device stays locked.</strong> A shared or exported vault is encrypted under your master key, and your key only travels under your passphrase and three Compound Question answers.</li>
     </ul>
     <p>What an unlocked vault does allow is autofill itself: someone at your computer could use the V tags to sign in to your sites on that computer, and could browse your bookmarks list. The auto-lock timer is what closes that window.</p>
 
@@ -264,24 +264,28 @@
 
 <section id="keys">
     <h2>Your Master Key</h2>
-    <p>Your master key is what makes your vault readable. It only ever leaves a device inside a <strong>key package</strong>, locked under a passphrase, plus three additional answers you choose, and stretched through <strong>1,000,000 rounds of PBKDF2</strong>. The Share Master Key QR code and the Export Key file both carry that same package.</p>
+    <p>Your master key is what makes your vault readable. It only ever leaves a device inside a <strong>key package</strong>, locked under a passphrase plus three Compound Questions you choose, all combined into one secret and stretched through <strong>1,000,000 rounds of PBKDF2</strong>. The Share Master Key QR code and the Export Key file both carry that same package.</p>
 
-    <p>The passphrase must stand on its own: at least 16 characters with a letter, a number, and a symbol, screened against common passwords. The three answers are mixed into that same derivation as extra secret input, so they can only add work for an attacker. They are never used to recover or reset anything, and nothing is stored to check them against. For comparison, Chrome and Google Password Manager export passwords as a plain CSV file, and Samsung Pass protects its export with one password.</p>
+    <p>The passphrase must stand on its own: at least 16 characters with a letter, a number, and a symbol, screened against common passwords. The three Compound Question answers are joined with the passphrase into one secret for that same derivation, so they can only add work for an attacker. They are never used to recover or reset anything, and nothing is stored to check them against.</p>
 
     <h3>Why a captured QR or stolen file is useless</h3>
     <ul>
       <li><strong>A captured vault QR</strong> is ciphertext. It cannot be read without your master key.</li>
-      <li><strong>A captured key QR or key file</strong> is locked. Opening it requires the passphrase and all three answers, and every guess costs a million rounds of stretching.</li>
+      <li><strong>A captured key QR or key file</strong> is locked. Opening it requires the passphrase and all three Compound Question answers at once, and every guess costs a million rounds of stretching.</li>
       <li><strong>Shoulder surfing the screen gets nothing usable.</strong> A photo of the QR code alone opens nothing.</li>
       <li><strong>The one real gap:</strong> someone who captures the key QR <em>and</em> watches you type your passphrase and answers. So type them where nobody can see your keyboard or screen.</li>
     </ul>
 
-    <h3>Choosing your passphrase and questions</h3>
+    <h3>How Compound Questions multiply the work</h3>
+    <p>The passphrase and your three answers are joined into one secret before the key is locked, and the only check is whether that whole secret opens the key. Someone guessing never learns whether the passphrase was right and an answer was wrong, so they have to get all four right at once. Every answer they might try multiplies the guesses: a passphrase narrowed down to a million candidates falls in about two minutes on its own, and the same passphrase with three answers of about a thousand plausible values each takes about 3,600 years on one high-end graphics card.</p>
+    <p>The key is wrapped once, under all four parts together. Separate layers, one per part, would each give their own yes or no, letting someone solve them one at a time, and the guesses would only add up.</p>
+
+    <h3>Choosing your passphrase and Compound Questions</h3>
     <p>You set these the first time you share or export your key. After that, sharing is one click. Change Key Passphrase in Sync replaces them.</p>
     <ul>
       <li><strong>Passphrase:</strong> at least 16 characters. Use four or more random words plus a number and a symbol, like <em>copper-lantern-mosaic-drift7!</em>. Common passwords and simple variations are refused.</li>
-      <li><strong>Questions:</strong> pick three from the list of ten. Choose the ones whose answers you think no one else could know. Answers to easier questions can be easier to remember, but some questions are naturally more private than others, and those are the ones to choose. Which three are most private is different for every person, and none of them should be on your social media or public records.</li>
-      <li><strong>Answers:</strong> one word each, and capitalization matters. They add to the passphrase, which already has to be strong on its own.</li>
+      <li><strong>Compound Questions:</strong> pick three from the list of ten. Choose the ones whose answers you think no one else could know. Answers to easier questions can be easier to remember, but some questions are naturally more private than others, and those are the ones to choose. Which three are most private is different for every person, and none of them should be on your social media or public records.</li>
+      <li><strong>Answers:</strong> one word each, and capitalization matters. They are combined with the passphrase into one secret, so each one multiplies the guesses needed. The passphrase already has to be strong on its own.</li>
       <li><strong>Write them down</strong> on paper and keep that paper somewhere separate from your key file. Nobody can recover them for you, but if you forget them while a device still unlocks your vault, Change Key Passphrase lets you set new ones and export a fresh key file.</li>
     </ul>
 
@@ -347,7 +351,7 @@
     <ol>
       <li>In your current browser: Sync, <strong>Export Key</strong> and <strong>Export Vault</strong>.</li>
       <li>Install Valid Vault in the new browser and complete first setup.</li>
-      <li>In the new browser: Sync, <strong>Import Key</strong>. Choose the key file and enter your passphrase and three answers.</li>
+      <li>In the new browser: Sync, <strong>Import Key</strong>. Choose the key file and enter your passphrase and three Compound Question answers.</li>
       <li>Choose how the new browser unlocks the key. <strong>Fingerprint or device PIN is recommended</strong>; a master password is the fallback.</li>
       <li>Sync, <strong>Import Vault</strong>, and choose the vault file. Choose <strong>Link this file</strong> to stay in sync automatically, or <strong>Merge once</strong> to copy it in one time.</li>
     </ol>
@@ -356,7 +360,7 @@
     <ol>
       <li>Somewhere private, on the old device: Sync, <strong>Share Master Key</strong>.</li>
       <li>On the new device: Sync, tap the scan box, and point the camera at the QR code.</li>
-      <li>Enter the passphrase and three answers, then choose how the new device unlocks.</li>
+      <li>Enter the passphrase and three Compound Question answers, then choose how the new device unlocks.</li>
       <li>On the old device: <strong>Share Vault</strong>, and scan it on the new device.</li>
     </ol>
 
@@ -403,7 +407,7 @@
     <h3>The two files</h3>
     <div class="table-wrap"><table>
       <tr><th>File</th><th>What it is</th><th>How often</th></tr>
-      <tr><td>Key file</td><td>Your master key, locked under your passphrase and three answers.</td><td>Once. Again only after Change Key Passphrase.</td></tr>
+      <tr><td>Key file</td><td>Your master key, locked under your passphrase and three Compound Question answers.</td><td>Once. Again only after Change Key Passphrase.</td></tr>
       <tr><td>Vault file</td><td>Everything you have saved, encrypted under your master key. Useless without the key.</td><td>Weekly if you save often, monthly otherwise, and before any big change.</td></tr>
     </table></div>
 
